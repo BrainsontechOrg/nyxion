@@ -1,0 +1,10 @@
+[build]
+  command = "astro build"
+  publish = "dist"
+
+[functions]
+  directory = ".netlify/v1/functions"
+
+[dev]
+  command = "npm run dev"
+  port = 4321
