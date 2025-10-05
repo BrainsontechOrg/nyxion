@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #1B365D;
+  --color-primary-light: #A8C3E7;
+  /* Nuevo: versión clara para iconos o hover */
+  --color-secondary-blue: #2E5984;
+  --color-teal: #1F7A8C;
+  --color-accent: #E76F51;
+
+  --color-background-light: #FFFFFF;
+  --color-background-dark: #0D1117;
+  --color-section-dark: #0D1117;
+  /* Nuevo: fondo más oscuro para secciones tipo WhyNyxion */
+  --color-surface-light: #F0F2F5;
+  --color-surface-dark: #161B22;
+
+  --color-border-light: #D0D7DE;
+  --color-border-dark: #30363D;
+
+  --color-text-light: #24292F;
+  --color-text-dark: #C9D1D9;
+  --color-text-muted-light: #57606A;
+  --color-text-muted-dark: #8B949E;
+
+  --color-hover-light: #ffffff;
+  --color-hover-dark: #f5f5f5;
+
+  --font-display: "Inter", sans-serif;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter/Inter-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter/Inter-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Iconos Material Symbols Rounded (local) */
+@font-face {
+  font-family: "Material Symbols Rounded";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Material-Symbols/MaterialSymbolsRounded-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* Clase para mostrar iconos */
+.material-symbols-rounded {
+  font-family: "Material Symbols Rounded";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.tab-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Oculta scrollbar en Firefox */
+}
+
+.tab-nav::-webkit-scrollbar {
+  display: none; /* Oculta scrollbar en WebKit */
+}
+
+.tab-btn {
+  flex: 0 0 auto; /* Evita que se compriman */
+}
+
+
+

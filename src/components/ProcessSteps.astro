@@ -1,0 +1,72 @@
+<section class="bg-surface-light py-16 dark:bg-surface-dark sm:py-24">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-text-light dark:text-white sm:text-4xl">
+        Nuestro Proceso
+      </h2>
+      <p class="mt-4 text-lg text-text-muted-light dark:text-text-muted-dark">
+        Un camino claro hacia una seguridad robusta.
+      </p>
+    </div>
+
+    <div class="relative mt-12">
+      <!-- Línea vertical solo visible en desktop -->
+      <div
+        class="absolute left-1/2 top-4 hidden h-full w-px -translate-x-1/2 bg-border-light dark:bg-border-dark md:block">
+      </div>
+
+      <div class="space-y-12 md:space-y-16">
+        <!-- Paso -->
+        {[
+          { num: 1, title: 'Evaluación', text: 'Análisis exhaustivo de tu infraestructura y riesgos.' },
+          { num: 2, title: 'Planificación', text: 'Diseño de una estrategia de seguridad personalizada.' },
+          { num: 3, title: 'Implementación', text: 'Despliegue de soluciones y configuración de controles.' },
+          { num: 4, title: 'Monitorización', text: 'Supervisión continua y mejora constante.' },
+        ].map((step, i) => (
+          <div class="relative" key={i}>
+            <div class="flex flex-col items-center md:flex-row md:justify-center">
+              <!-- Círculo -->
+              <div
+                class="step-circle z-10 flex h-10 w-10 items-center justify-center rounded-full bg-border-dark text-white opacity-0 scale-75 transition-all duration-700 ease-out md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+                {step.num}
+              </div>
+              <!-- Tarjeta -->
+              <div
+                class={`mt-6 w-full max-w-md rounded-lg bg-background-light p-6 shadow-md dark:bg-background-dark md:w-5/12 ${i % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'}`}>
+                <h3 class="text-lg font-bold text-text-light dark:text-white">
+                  {step.title}
+                </h3>
+                <p class="mt-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+                  {step.text}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script client:load>
+  const steps = document.querySelectorAll(".step-circle");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(
+            "opacity-100",
+            "scale-110",
+            "bg-primary",
+            "shadow-lg",
+            "shadow-primary/40"
+          );
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  steps.forEach((el) => observer.observe(el));
+</script>
