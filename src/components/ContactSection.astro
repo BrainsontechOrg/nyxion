@@ -33,7 +33,7 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
             <span class="material-symbols-rounded text-primary"
               >location_on</span
             >
-            <span>Madrid, España</span>
+            <span>Sevilla, España</span>
           </div>
           <div class="flex items-center gap-3">
             <span class="material-symbols-rounded text-primary">mail</span>
@@ -55,6 +55,12 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
         id="form"
         method="POST"
         class="space-y-4 rounded-xl bg-background-dark p-6 shadow-lg border border-border-dark">
+        <div
+          class="cf-turnstile"
+          data-sitekey={import.meta.env.TURNSTILE_SITE_KEY}
+          data-theme="dark">
+        </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <input
@@ -96,7 +102,7 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
         <select
           name="service"
           class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary">
-          <option value="">Servicio de interés</option>
+          <option value="interes">Servicio de interés</option>
           <option value="preventiva">Ciberseguridad Preventiva</option>
           <option value="reactiva">Ciberseguridad Reactiva</option>
           <option value="avanzada">Ciberseguridad Avanzada</option>
@@ -124,7 +130,7 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
 
         <button
           type="submit"
-          class="w-full rounded-lg bg-primary px-6 py-3 font-semibold text-white transition hover:bg-secondary-blue">
+          class="w-full rounded-lg bg-primary px-6 py-3 font-semibold text-white transition hover:bg-secondary-blue cursor-pointer">
           Enviar consulta
         </button>
       </form>
@@ -136,7 +142,7 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
 </script> -->
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("form");
+    const form = document.querySelector("#form");
     const button = form.querySelector("button[type='submit']");
 
     form.addEventListener("submit", async (e) => {
@@ -144,32 +150,45 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
       button.disabled = true;
       button.textContent = "Enviando...";
 
-      const data = new FormData(form);
+      const formData = Object.fromEntries(new FormData(form));
 
       try {
-        const response = await fetch(
-          "/actions/server/send?__astro_action=json",
-          {
-            method: "POST",
-            body: data,
-          },
-        );
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
 
-        if (!response.ok) throw new Error("Error en la petición");
+        const result = await res.json();
 
-        const result = await response.json();
-        console.log("Respuesta del servidor:", result);
+        // Si el token caducó o fue duplicado → regenerar sin mostrar error
+        if (result.regenerate) {
+          if (typeof turnstile !== "undefined") turnstile.reset();
+          button.disabled = false;
+          button.textContent = "Enviar consulta";
+          return;
+        }
 
-        if (result?.success) {
-          notify("✅ Tu consulta se ha enviado correctamente.", "success");
+        if (result.success) {
+          notify(
+            "✅ Tu consulta se ha enviado correctamente. En breve un especialista se pondrá en contacto contigo.",
+            "success",
+          );
           form.reset();
         } else {
-          notify("❌ Error al enviar la consulta.", "error");
+          const mensaje = result.error
+            ? `❌ ${result.error}`
+            : "❌ Ha ocurrido un error. Inténtalo de nuevo.";
+          notify(mensaje, "error");
+          if (typeof turnstile !== "undefined") turnstile.reset();
         }
-      } catch (err) {
-        notify("⚠️ Error de conexión con el servidor.", "error");
-        console.error(err);
+      } catch {
+        notify(
+          "❌ " + (result.error || "Ha ocurrido un error. Inténtalo de nuevo."),
+          "error",
+        );
       } finally {
+        if (typeof turnstile !== "undefined") turnstile.reset();
         button.disabled = false;
         button.textContent = "Enviar consulta";
       }

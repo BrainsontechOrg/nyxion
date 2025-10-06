@@ -1,13 +1,13 @@
 <section
-  class="section tabs bg-surface-light py-16 dark:bg-surface-dark sm:py-24"
+  class="section tabs bg-section-dark py-16 dark:bg-surface-dark sm:py-24"
   id="servicios">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <h2
-      class="text-3xl font-extrabold text-text-light dark:text-white sm:text-4xl text-center reveal">
+      class="text-3xl font-extrabold text-text-contrast-dark dark:text-white sm:text-4xl text-center reveal">
       Servicios Nyxion
     </h2>
     <p
-      class="mt-4 text-lg text-text-muted-light dark:text-text-muted-dark text-center reveal">
+      class="mt-4 text-lg text-text-muted-dark dark:text-text-muted-dark text-center reveal">
       Cobertura total en cuatro líneas:
       <strong>Preventiva</strong>, <strong>Reactiva</strong>, <strong
         >Avanzada</strong
@@ -18,24 +18,24 @@
 
     <!-- Navegación -->
     <div
-      class="tab-nav mt-12 flex justify-start md:justify-center space-x-4 border-b border-border-light dark:border-border-dark px-2">
+      class="tab-nav mt-12 flex justify-start md:justify-center gap-6 border-b border-border-light dark:border-border-dark px-2">
       <button
-        class="tab-btn active whitespace-nowrap px-4 py-3 border-b-2 border-primary text-primary transition-colors duration-200 cursor-pointer"
+        class="tab-btn active whitespace-nowrap px-4 py-3 border-b-2 border-primary text-primary font-semibold transition-all duration-200 cursor-pointer"
         data-tab="preventiva">
         Ciberseguridad Preventiva
       </button>
       <button
-        class="tab-btn whitespace-nowrap cursor-pointer px-4 py-3 border-b-2 border-transparent text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors duration-200"
+        class="tab-btn whitespace-nowrap cursor-pointer px-4 py-3 border-b-2 border-transparent text-text-muted-dark hover:text-primary-light hover:border-primary-light transition-all duration-200 font-medium"
         data-tab="reactiva">
         Ciberseguridad Reactiva
       </button>
       <button
-        class="tab-btn whitespace-nowrap cursor-pointer px-4 py-3 border-b-2 border-transparent text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors duration-200"
+        class="tab-btn whitespace-nowrap cursor-pointer px-4 py-3 border-b-2 border-transparent text-text-muted-dark hover:text-primary-light hover:border-primary-light transition-all duration-200 font-medium"
         data-tab="avanzada">
         Ciberseguridad Avanzada
       </button>
       <button
-        class="tab-btn whitespace-nowrap cursor-pointer px-4 py-3 border-b-2 border-transparent text-text-muted-light dark:text-text-muted-dark hover:text-text-light dark:hover:text-text-dark transition-colors duration-200"
+        class="tab-btn whitespace-nowrap cursor-pointer px-4 py-3 border-b-2 border-transparent text-text-muted-dark hover:text-primary-light hover:border-primary-light transition-all duration-200 font-medium"
         data-tab="formacion">
         Formación y Concienciación
       </button>
@@ -288,7 +288,14 @@
         });
 
         // 🔹 Activar el actual
-        btn.classList.add("active", "border-primary", "text-primary");
+        // 🔹 Activar el actual (con más contraste)
+        btn.classList.add(
+          "active",
+          "border-primary",
+          "text-primary",
+          "font-semibold",
+          "brightness-125",
+        );
         btn.classList.remove(
           "border-transparent",
           "text-text-muted-light",
@@ -305,3 +312,15 @@
     });
   });
 </script>
+<style>
+  .tab-btn.active {
+    color: #b9aaff !important; /* Morado más claro */
+    /* border-bottom-width: 2px !important;
+    border-color: #9c88ff !important; */
+    font-weight: 600 !important;
+    filter: brightness(1.3);
+  }
+  .tab-btn:hover {
+    color: #b9aaff !important;
+  }
+</style>

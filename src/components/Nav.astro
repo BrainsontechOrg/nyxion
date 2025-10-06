@@ -1,0 +1,59 @@
+---
+const links = [
+  { label: "Confían en Nyxion", href: "/#confianza"},
+  { label: "Servicios", href: "/#servicios" },
+  { label: "Por qué Nyxion", href: "/#por-que-nyxion" },
+  { label: "Nuestro Proceso", href: "/#nuestro-proceso" },
+  { label: "Resultados", href: "/#resultados" },
+  { label: "Testimonios", href: "/#testimonios" },
+  { label: "FAQ", href: "/#faq" },
+];
+---
+
+<nav class="hidden lg:flex items-center gap-8">
+  {
+    links.map((link) => (
+      <a
+        class="text-sm font-medium text-text-muted-light hover:text-hover-light dark:hover:text-hover-dark transition-colors"
+        href={link.href}>
+        {link.label}
+      </a>
+    ))
+  }
+
+  <a
+    href="/#contacto"
+    class="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-blue transition-colors">
+    Contáctanos
+  </a>
+</nav>
+
+<!-- Menú móvil -->
+<nav
+  id="mobile-nav"
+  class="absolute left-0 top-20 w-full bg-surface-light dark:bg-surface-dark p-6 flex flex-col gap-4 lg:hidden hidden shadow-lg">
+  {
+    links.map((link) => (
+      <a
+        class="text-base font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors"
+        href={link.href}>
+        {link.label}
+      </a>
+    ))
+  }
+
+  <a
+    href="/#contacto"
+    class="rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-secondary-blue transition-colors">
+    Contáctanos
+  </a>
+</nav>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
+
+  toggle?.addEventListener("click", () => {
+    mobileNav.classList.toggle("hidden");
+  });
+</script>

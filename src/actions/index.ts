@@ -18,13 +18,13 @@ export const server = {
       console.log({ name, email, service, message });
 
       try {
-        /*
+
         await resend.emails.send({
-          from: "Nyxion <info@nyxioncybersecurity.com>",
-          to: ["info@nyxioncybersecurity.com"],
+          from: "Nyxion <info@brainsontech.com>",
+          to: ["info@brainsontech.com"],
           subject: `Nueva consulta de ${name}`,
           html: `
-            <h3>Nueva consulta desde el sitio web</h3>
+            <h3>Nueva consulta desde <strong>NYXION</strong></h3>
             <p><strong>Nombre:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Servicio:</strong> ${service || ""}</p>
@@ -32,9 +32,7 @@ export const server = {
             <p>${message}</p>
           `,
         });
-        */
 
-        // Devuelve algo simple solo para debug
         return { success: true };
       } catch (err: any) {
         console.error("❌ Error en la acción:", err);

@@ -1,20 +1,42 @@
+---
+import Nav from "@/components/Nav.astro";
+---
+
 <header class="fixed top-0 z-50 w-full bg-transparent backdrop-blur-sm">
-  <div class="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+  <div
+    class="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+    <!-- Logo + Hamburguesa -->
     <div class="flex items-center gap-3">
-      <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor"
+      <button
+        id="menu-toggle"
+        class="lg:hidden text-text-light dark:text-text-dark">
+        <!-- Icono hamburguesa -->
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 48 48">
+        <path
+          clip-rule="evenodd"
+          d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+          fill="currentColor"
           fill-rule="evenodd"></path>
       </svg>
-      <h2 class="text-2xl font-bold text-text-light dark:text-text-dark">Nyxion</h2>
+      <h2 class="text-2xl font-bold text-text-light dark:text-text-dark">
+        Nyxion
+      </h2>
     </div>
-    <nav class="hidden items-center gap-8 lg:flex">
-      <a class="text-sm font-medium text-text-muted-light hover:text-hover-light dark:hover:text-hover-dark" href="#">Servicios</a>
-      <a class="text-sm font-medium text-text-muted-light hover:text-hover-light dark:hover:text-hover-dark" href="#">Soluciones</a>
-      <a class="text-sm font-medium text-text-muted-light hover:text-hover-light dark:hover:text-hover-dark" href="#">Recursos</a>
-      <a class="text-sm font-medium text-text-muted-light hover:text-hover-light dark:hover:text-hover-dark" href="#">Compañía</a>
-    </nav>
-    <div class="flex items-center gap-4">
-      <button class="rounded-lg cursor-pointer bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-secondary-blue">Contáctanos</button>
-    </div>
+
+    <!-- Menú de escritorio + botón CTA -->
+    <Nav />
   </div>
 </header>
