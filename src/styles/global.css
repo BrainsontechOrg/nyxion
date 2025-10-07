@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #4B3BA9;
+  --color-primary: #7C6FF2;
   /* Morado oscuro principal */
   --color-primary-light: #9A8BFF;
   /* Para hover o acentos claros */
