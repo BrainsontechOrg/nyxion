@@ -3,7 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #7C6FF2;
+  --color-primary: #6A5BF0;
+  --color-primary: #6A5BF0;
   /* Morado oscuro principal */
   --color-primary-light: #9A8BFF;
   /* Para hover o acentos claros */
@@ -36,6 +37,8 @@
   /* Texto en fondos oscuros, lavanda claro */
   --color-text-muted-light: #4c4c66;
   --color-text-muted-dark: #A0A0B8;
+
+  --color-text-results: #7C6FF2;
   /* Texto secundario más elegante */
 
   --color-hover-light: #1B152D;
