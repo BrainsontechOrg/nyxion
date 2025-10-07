@@ -29,7 +29,13 @@ const { title = "Nyxion Cybersecurity" } = Astro.props;
 
     <!-- Preload de CSS principal -->
     <link rel="preload" as="style" href="/_astro/style.css" />
-    <link rel="stylesheet" href="/_astro/style.css" />
+    <link
+      rel="stylesheet"
+      href="/_astro/style.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript><link rel="stylesheet" href="/_astro/style.css" /></noscript>
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -56,32 +62,34 @@ const { title = "Nyxion Cybersecurity" } = Astro.props;
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:url" content={import.meta.env.PUBLIC_SITE_URL} />
 
+    <link rel="preconnect" href={import.meta.env.PUBLIC_SITE_URL} crossorigin />
+
     <link
       rel="preload"
       href="/fonts/Inter/Inter-Regular.woff2"
       as="font"
-      type="font/ttf"
+      type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
       href="/fonts/Inter/Inter-Medium.woff2"
       as="font"
-      type="font/ttf"
+      type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
       href="/fonts/Inter/Inter-Bold.woff2"
       as="font"
-      type="font/ttf"
+      type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
       href="/fonts/Material-Symbols/MaterialSymbolsRounded-Regular.woff2"
       as="font"
-      type="font/ttf"
+      type="font/woff2"
       crossorigin
     />
   </head>
