@@ -48,7 +48,7 @@
 }
 @font-face {
   font-family: 'Inter';
-  src: url('/fonts/Inter/Inter-Regular.ttf') format('truetype');
+  src: url('/fonts/Inter/Inter-Regular.woff2') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -56,7 +56,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('/fonts/Inter/Inter-Medium.ttf') format('truetype');
+  src: url('/fonts/Inter/Inter-Medium.woff2') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -64,7 +64,7 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('/fonts/Inter/Inter-Bold.ttf') format('truetype');
+  src: url('/fonts/Inter/Inter-Bold.woff2') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -75,7 +75,7 @@
   font-family: "Material Symbols Rounded";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/Material-Symbols/MaterialSymbolsRounded-Regular.ttf") format("truetype");
+  src: url("/fonts/Material-Symbols/MaterialSymbolsRounded-Regular.woff2") format("truetype");
   font-display: swap;
 }
 
