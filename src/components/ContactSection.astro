@@ -1,26 +1,14 @@
----
-import { isInputError } from "astro:actions";
-import { server } from "@/actions";
-import { actions } from "astro:actions";
-
-// Obtenemos el resultado de la acción (por si hay errores o se envió bien)
-const result = Astro.getActionResult(actions.send);
-console.log("Result ==> ", result);
-
-if (result && !result.error) {
-  console.log("Todo ok!!");
-}
-const inputErrors = isInputError(result?.error) ? result.error.fields : {};
----
-
 <section
   id="contacto"
-  class="bg-surface-dark py-16 sm:py-24 dark:bg-surface-dark">
+  class="bg-section-dark py-16 sm:py-24 dark:bg-section-dark"
+  aria-labelledby="contacto-title">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid gap-12 lg:grid-cols-2 items-center">
       <!-- Lado izquierdo -->
       <div>
-        <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+        <h2
+          class="text-3xl font-extrabold text-white sm:text-4xl"
+          id="contacto-title">
           Hablemos de tu seguridad digital
         </h2>
         <p class="mt-4 text-lg text-text-muted-dark max-w-lg">
@@ -68,16 +56,8 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
               name="name"
               placeholder="Nombre completo *"
               required
-              aria-describedby={inputErrors.name ? "name-error" : undefined}
               class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary"
             />
-            {
-              inputErrors.name && (
-                <p id="name-error" class="text-accent text-sm mt-1">
-                  {inputErrors.name[0]}
-                </p>
-              )
-            }
           </div>
 
           <div>
@@ -86,16 +66,8 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
               name="email"
               placeholder="Email corporativo *"
               required
-              aria-describedby={inputErrors.email ? "email-error" : undefined}
               class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary"
             />
-            {
-              inputErrors.email && (
-                <p id="email-error" class="text-accent text-sm mt-1">
-                  {inputErrors.email[0]}
-                </p>
-              )
-            }
           </div>
         </div>
 
@@ -115,17 +87,9 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
             name="message"
             placeholder="Cuéntanos brevemente tu situación *"
             required
-            aria-describedby={inputErrors.message ? "message-error" : undefined}
             rows="4"
             class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary"
           ></textarea>
-          {
-            inputErrors.message && (
-              <p id="message-error" class="text-accent text-sm mt-1">
-                {inputErrors.message[0]}
-              </p>
-            )
-          }
         </div>
 
         <button
@@ -137,9 +101,6 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
     </div>
   </div>
 </section>
-<!-- <script>
-  document.querySelector("form").addEventListener("submit", (e) => e.preventDefault());
-</script> -->
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("#form");

@@ -2,14 +2,14 @@
 import Nav from "@/components/Nav.astro";
 ---
 
-<header class="fixed top-0 z-50 w-full bg-transparent backdrop-blur-sm">
+<header
+  id="navbar"
+  class="fixed top-0 z-50 w-full bg-transparent backdrop-blur-sm transition-all duration-300">
   <div
     class="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
     <!-- Logo + Hamburguesa -->
     <div class="flex items-center gap-3">
-      <button
-        id="menu-toggle"
-        class="lg:hidden text-text-light dark:text-text-dark">
+      <button id="menu-toggle" class="lg:hidden text-white dark:text-text-dark">
         <!-- Icono hamburguesa -->
         <svg
           class="h-6 w-6"
@@ -31,12 +31,32 @@ import Nav from "@/components/Nav.astro";
           fill="currentColor"
           fill-rule="evenodd"></path>
       </svg>
-      <h2 class="text-2xl font-bold text-text-light dark:text-text-dark">
-        Nyxion
-      </h2>
+      <h2 class="text-2xl font-bold text-white">Nyxion</h2>
     </div>
 
-    <!-- Menú de escritorio + botón CTA -->
     <Nav />
   </div>
 </header>
+
+<script is:inline>
+  document.addEventListener("scroll", () => {
+    const navbar = document.getElementById("navbar");
+    const scrollY = window.scrollY;
+
+    if (scrollY > 50) {
+      navbar.classList.add(
+        "bg-section-dark/90",
+        +"shadow-[0_2px_10px_rgba(0,0,0,0.4)]",
+        "backdrop-blur-md",
+      );
+      navbar.classList.remove("bg-transparent");
+    } else {
+      navbar.classList.remove(
+        "bg-section-dark/90",
+        +"shadow-[0_2px_10px_rgba(0,0,0,0.4)]",
+        "backdrop-blur-md",
+      );
+      navbar.classList.add("bg-transparent");
+    }
+  });
+</script>

@@ -1,11 +1,10 @@
 ---
 const links = [
-  { label: "Confían en Nyxion", href: "/#confianza"},
+  { label: "Confían en Nyxion", href: "/#confianza" },
   { label: "Servicios", href: "/#servicios" },
   { label: "Por qué Nyxion", href: "/#por-que-nyxion" },
   { label: "Nuestro Proceso", href: "/#nuestro-proceso" },
   { label: "Resultados", href: "/#resultados" },
-  { label: "Testimonios", href: "/#testimonios" },
   { label: "FAQ", href: "/#faq" },
 ];
 ---
@@ -14,7 +13,7 @@ const links = [
   {
     links.map((link) => (
       <a
-        class="text-sm font-medium text-text-muted-light hover:text-hover-light dark:hover:text-hover-dark transition-colors"
+        class="text-sm font-medium text-text-white hover:text-primary-light transition-colors"
         href={link.href}>
         {link.label}
       </a>

@@ -1,268 +1,205 @@
+---
+const servicios = [
+  {
+    tipo: "preventiva",
+    titulo: "Ciberseguridad Preventiva",
+    items: [
+      {
+        titulo: "Auditoría de Seguridad Integral",
+        descripcion:
+          "Evaluación de riesgos y madurez: nube, endpoints, redes y aplicaciones.",
+        puntos: [
+          "Inventario y priorización de activos",
+          "Gap analysis vs. buenas prácticas",
+          "Roadmap de remediación",
+        ],
+      },
+      {
+        titulo: "Pentesting Web & Apps",
+        descripcion:
+          "Pruebas de intrusión manuales con reporte ejecutivo y técnico.",
+        puntos: ["OWASP Top 10", "Evidencias y PoC", "Re-test incluido"],
+      },
+      {
+        titulo: "Seguridad de Redes & WiFi",
+        descripcion: "Hardening de infraestructura y segmentación efectiva.",
+        puntos: [
+          "Configuración segura",
+          "Pruebas de cobertura",
+          "Accesos privilegiados",
+        ],
+      },
+    ],
+  },
+  {
+    tipo: "reactiva",
+    titulo: "Ciberseguridad Reactiva",
+    items: [
+      {
+        titulo: "Respuesta a Incidentes",
+        descripcion:
+          "Contención, erradicación y recuperación con guía de crisis.",
+        puntos: [
+          "Playbooks efectivos",
+          "Restauración priorizada",
+          "Lecciones aprendidas",
+        ],
+      },
+      {
+        titulo: "Forense Digital",
+        descripcion: "Adquisición, análisis y preservación de evidencias.",
+        puntos: ["Timeline & IOC hunting", "Informe pericial", "Soporte legal"],
+      },
+      {
+        titulo: "Remediación de Vulnerabilidades",
+        descripcion: "Correcciones guiadas y verificación de efectividad.",
+        puntos: [
+          "Parcheo y hardening",
+          "Revisión de accesos",
+          "Validación post-fix",
+        ],
+      },
+    ],
+  },
+  {
+    tipo: "avanzada",
+    titulo: "Ciberseguridad Avanzada",
+    items: [
+      {
+        titulo: "Monitorización 24/7 (SOC/SIEM)",
+        descripcion: "Detección temprana y respuesta coordinada.",
+        puntos: [
+          "Casos de uso a medida",
+          "Alertas priorizadas",
+          "Informes ejecutivos",
+        ],
+      },
+      {
+        titulo: "Threat Hunting & Intel",
+        descripcion: "Búsqueda proactiva de amenazas y TTPs relevantes.",
+        puntos: [
+          "Detecciones hipotéticas",
+          "IOC/IOA feed",
+          "Mitre ATT&CK mapping",
+        ],
+      },
+      {
+        titulo: "Protección de Correo y Nube",
+        descripcion:
+          "Controles avanzados para O365/Google Workspace y nubes públicas.",
+        puntos: ["DMARC, DKIM, SPF", "CASB / posture", "Automatización (SOAR)"],
+      },
+    ],
+  },
+  {
+    tipo: "formacion",
+    titulo: "Formación y Concienciación",
+    items: [
+      {
+        titulo: "Charlas & Talleres",
+        descripcion: "Sesiones prácticas orientadas a negocio y TI.",
+        puntos: [
+          "Buenas prácticas",
+          "Gestión de contraseñas",
+          "Seguridad móvil",
+        ],
+      },
+      {
+        titulo: "Simulacros de Phishing",
+        descripcion: "Campañas medibles con micro-learning.",
+        puntos: [
+          "Plantillas realistas",
+          "KPIs por equipo",
+          "Refuerzo inmediato",
+        ],
+      },
+      {
+        titulo: "Programas a Medida",
+        descripcion: "Formación por rol: directivos, finanzas, IT & soporte.",
+        puntos: [
+          "Calendario trimestral",
+          "Materiales reutilizables",
+          "Certificados",
+        ],
+      },
+    ],
+  },
+];
+---
+
 <section
   class="section tabs bg-section-dark py-16 dark:bg-surface-dark sm:py-24"
-  id="servicios">
+  id="servicios"
+  aria-labelledby="servicios-title">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <h2
-      class="text-3xl font-extrabold text-text-contrast-dark dark:text-white sm:text-4xl text-center reveal">
+      class="text-3xl font-extrabold text-white sm:text-4xl text-center"
+      id="servicios-title">
       Servicios Nyxion
     </h2>
     <p
-      class="mt-4 text-lg text-text-muted-dark dark:text-text-muted-dark text-center reveal">
+      class="mt-4 text-lg text-text-muted-dark dark:text-text-muted-dark text-center">
       Cobertura total en cuatro líneas:
-      <strong>Preventiva</strong>, <strong>Reactiva</strong>, <strong
-        >Avanzada</strong
-      > y
-      <strong>Formación</strong>. Intervenimos donde más impacto tiene para tu
-      negocio.
+      <strong>Preventiva</strong>, <strong>Reactiva</strong>,
+      <strong>Avanzada</strong> y <strong>Formación</strong>. Intervenimos donde
+      más impacto tiene para tu negocio.
     </p>
 
-    <!-- Navegación -->
+    <!-- Dropdown solo en móvil -->
+    <div class="block lg:hidden mt-8">
+      <select
+        id="mobile-tabs"
+        class="w-full p-3 rounded-md bg-white text-text-light border border-border-light
+           dark:bg-background-dark dark:text-white dark:border-border-dark
+           focus:outline-none focus:ring-2 focus:ring-primary">
+        {servicios.map((s) => <option value={s.tipo}>{s.titulo}</option>)}
+      </select>
+    </div>
+
+    <!-- Tabs escritorio -->
     <div
-      class="tab-nav mt-12 flex justify-start md:justify-center gap-6 border-b border-border-light dark:border-border-dark px-2">
-      <button
-        class="tab-btn active whitespace-nowrap px-4 py-3 border-b-2 border-primary text-primary font-semibold transition-all duration-200 cursor-pointer"
-        data-tab="preventiva">
-        Ciberseguridad Preventiva
-      </button>
-      <button
-        class="tab-btn whitespace-nowrap cursor-pointer px-4 py-3 border-b-2 border-transparent text-text-muted-dark hover:text-primary-light hover:border-primary-light transition-all duration-200 font-medium"
-        data-tab="reactiva">
-        Ciberseguridad Reactiva
-      </button>
-      <button
-        class="tab-btn whitespace-nowrap cursor-pointer px-4 py-3 border-b-2 border-transparent text-text-muted-dark hover:text-primary-light hover:border-primary-light transition-all duration-200 font-medium"
-        data-tab="avanzada">
-        Ciberseguridad Avanzada
-      </button>
-      <button
-        class="tab-btn whitespace-nowrap cursor-pointer px-4 py-3 border-b-2 border-transparent text-text-muted-dark hover:text-primary-light hover:border-primary-light transition-all duration-200 font-medium"
-        data-tab="formacion">
-        Formación y Concienciación
-      </button>
+      class="tab-nav mt-12 hidden lg:flex flex-wrap justify-center gap-4 border-b border-border-light dark:border-border-dark px-2">
+      {
+        servicios.map((s) => (
+          <button
+            class="tab-btn whitespace-nowrap px-4 py-3 border-b-2 border-transparent
+         text-sm md:text-base text-text-muted-dark
+         hover:text-primary-light hover:border-primary-light
+         transition-all duration-200 font-medium cursor-pointer"
+            data-tab={s.tipo}>
+            {s.titulo}
+          </button>
+        ))
+      }
     </div>
 
     <!-- Paneles -->
     <div class="tab-panels mt-12">
-      <!-- Preventiva -->
-      <div
-        class="cards tab-panel grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-        id="tab-preventiva"
-        role="region"
-        aria-label="Ciberseguridad Preventiva">
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Auditoría de Seguridad Integral
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Evaluación de riesgos y madurez: nube, endpoints, redes y
-            aplicaciones.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>Inventario y priorización de activos</li>
-            <li>Gap analysis vs. buenas prácticas</li>
-            <li>Roadmap de remediación</li>
-          </ul>
-        </article>
-
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Pentesting Web & Apps
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Pruebas de intrusión manuales con reporte ejecutivo y técnico.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>OWASP Top 10</li>
-            <li>Evidencias y PoC</li>
-            <li>Re-test incluido</li>
-          </ul>
-        </article>
-
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Seguridad de Redes & WiFi
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Hardening de infraestructura y segmentación efectiva.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>Configuración segura</li>
-            <li>Pruebas de cobertura</li>
-            <li>Accesos privilegiados</li>
-          </ul>
-        </article>
-      </div>
-
-      <!-- Reactiva -->
-      <div
-        class="cards tab-panel hidden grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-        id="tab-reactiva"
-        role="region"
-        aria-label="Ciberseguridad Reactiva">
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Respuesta a Incidentes
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Contención, erradicación y recuperación con guía de crisis.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>Playbooks efectivos</li>
-            <li>Restauración priorizada</li>
-            <li>Lecciones aprendidas</li>
-          </ul>
-        </article>
-
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Forense Digital
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Adquisición, análisis y preservación de evidencias.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>Timeline & IOC hunting</li>
-            <li>Informe pericial</li>
-            <li>Soporte legal</li>
-          </ul>
-        </article>
-
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Remediación de Vulnerabilidades
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Correcciones guiadas y verificación de efectividad.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>Parcheo y hardening</li>
-            <li>Revisión de accesos</li>
-            <li>Validación post-fix</li>
-          </ul>
-        </article>
-      </div>
-
-      <!-- Avanzada -->
-      <div
-        class="cards tab-panel hidden grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-        id="tab-avanzada"
-        role="region"
-        aria-label="Ciberseguridad Avanzada">
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Monitorización 24/7 (SOC/SIEM)
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Detección temprana y respuesta coordinada.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>Casos de uso a medida</li>
-            <li>Alertas priorizadas</li>
-            <li>Informes ejecutivos</li>
-          </ul>
-        </article>
-
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Threat Hunting & Intel
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Búsqueda proactiva de amenazas y TTPs relevantes.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>Detecciones hipotéticas</li>
-            <li>IOC/IOA feed</li>
-            <li>Mitre ATT&CK mapping</li>
-          </ul>
-        </article>
-
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Protección de Correo y Nube
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Controles avanzados para O365/Google Workspace y nubes públicas.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>DMARC, DKIM, SPF</li>
-            <li>CASB / posture</li>
-            <li>Automatización (SOAR) básica</li>
-          </ul>
-        </article>
-      </div>
-
-      <!-- Formación -->
-      <div
-        class="cards tab-panel hidden grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-        id="tab-formacion"
-        role="region"
-        aria-label="Formación y Concienciación">
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Charlas & Talleres
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Sesiones prácticas orientadas a negocio y TI.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>Buenas prácticas</li>
-            <li>Gestión de contraseñas</li>
-            <li>Seguridad móvil</li>
-          </ul>
-        </article>
-
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Simulacros de Phishing
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Campañas medibles con micro-learning.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>Plantillas realistas</li>
-            <li>KPIs por equipo</li>
-            <li>Refuerzo inmediato</li>
-          </ul>
-        </article>
-
-        <article
-          class="card reveal rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark">
-          <h3 class="font-bold text-lg text-text-light dark:text-white">
-            Programas a Medida
-          </h3>
-          <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
-            Formación por rol: directivos, finanzas, IT & soporte.
-          </p>
-          <ul
-            class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
-            <li>Calendario trimestral</li>
-            <li>Materiales reutilizables</li>
-            <li>Certificados</li>
-          </ul>
-        </article>
-      </div>
+      {
+        servicios.map((s, i) => (
+          <div
+            id={`tab-${s.tipo}`}
+            class={`cards tab-panel ${i === 0 ? "" : "hidden"} grid gap-8 md:grid-cols-2 lg:grid-cols-3`}
+            role="region"
+            aria-label={s.titulo}>
+            {s.items.map((item) => (
+              <article class="rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark transition-transform hover:scale-[1.01]">
+                <h3 class="font-bold text-lg text-text-light dark:text-white">
+                  {item.titulo}
+                </h3>
+                <p class="mt-2 text-text-muted-light dark:text-text-muted-dark">
+                  {item.descripcion}
+                </p>
+                <ul class="mt-2 list-disc pl-5 text-sm text-text-muted-light dark:text-text-muted-dark">
+                  {item.puntos.map((p) => (
+                    <li>{p}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
@@ -271,56 +208,54 @@
   document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll(".tab-btn");
     const panels = document.querySelectorAll(".tab-panel");
+    const select = document.getElementById("mobile-tabs");
 
-    if (!buttons.length || !panels.length) return;
+    // --- Estado inicial ---
+    if (buttons.length && panels.length) {
+      buttons[0].classList.add("text-white", "font-semibold", "border-primary");
+      panels[0].classList.remove("hidden");
+      if (select) select.value = buttons[0].dataset.tab;
+    }
 
+    // --- Click tabs escritorio ---
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const target = btn.dataset.tab;
-
-        buttons.forEach((b) => {
-          b.classList.remove("active", "border-primary", "text-primary");
-          b.classList.add(
-            "border-transparent",
-            "text-text-muted-light",
-            "dark:text-text-muted-dark",
-          );
-        });
-
-        // 🔹 Activar el actual
-        // 🔹 Activar el actual (con más contraste)
-        btn.classList.add(
-          "active",
-          "border-primary",
-          "text-primary",
-          "font-semibold",
-          "brightness-125",
+        buttons.forEach((b) =>
+          b.classList.remove("text-white", "font-semibold", "border-primary"),
         );
-        btn.classList.remove(
-          "border-transparent",
-          "text-text-muted-light",
-          "dark:text-text-muted-dark",
-        );
-
-        // 🔹 Ocultar todos los paneles
         panels.forEach((panel) => panel.classList.add("hidden"));
 
-        // 🔹 Mostrar solo el panel correspondiente
-        const selected = document.getElementById(`tab-${target}`);
-        if (selected) selected.classList.remove("hidden");
+        btn.classList.add("text-white", "font-semibold", "border-primary");
+        document.getElementById(`tab-${target}`).classList.remove("hidden");
+
+        if (select) select.value = target;
       });
     });
+
+    // --- Cambio en móvil (dropdown) ---
+    if (select) {
+      select.addEventListener("change", (e) => {
+        const target = e.target.value;
+        panels.forEach((panel) => panel.classList.add("hidden"));
+        document.getElementById(`tab-${target}`).classList.remove("hidden");
+
+        buttons.forEach((b) =>
+          b.classList.remove("text-white", "font-semibold", "border-primary"),
+        );
+        const active = document.querySelector(`[data-tab="${target}"]`);
+        if (active)
+          active.classList.add("text-white", "font-semibold", "border-primary");
+      });
+    }
   });
 </script>
+
 <style>
-  .tab-btn.active {
-    color: #b9aaff !important; /* Morado más claro */
-    /* border-bottom-width: 2px !important;
-    border-color: #9c88ff !important; */
-    font-weight: 600 !important;
-    filter: brightness(1.3);
-  }
-  .tab-btn:hover {
-    color: #b9aaff !important;
+  /* Fuerza que el tab-nav se oculte siempre en pantallas pequeñas */
+  @media (max-width: 1023px) {
+    .tab-nav {
+      display: none !important;
+    }
   }
 </style>

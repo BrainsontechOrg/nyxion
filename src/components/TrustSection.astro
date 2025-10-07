@@ -1,9 +1,10 @@
 <section
   class="py-20 bg-surface-light dark:bg-surface-dark transition-colors duration-500"
-  id="confianza">
+  id="confianza"
+  aria-labelledby="confianza-title">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h2
-      class="text-3xl font-extrabold text-text-light dark:text-white sm:text-4xl tracking-tight">
+      class="text-3xl font-extrabold text-text-light dark:text-white sm:text-4xl tracking-tight" id="confianza-title">
       Confían en Nyxion
     </h2>
     <p
@@ -23,7 +24,7 @@
           "Telecomunicaciones",
           "E-commerce",
         ].map((item) => (
-          <span class="px-6 py-2 cursor-pointer rounded-full border border-border-light dark:border-border-dark bg-surface-light/60 dark:bg-surface-dark/60 text-text-light dark:text-text-dark font-medium backdrop-blur-sm shadow-sm transition hover:border-primary hover:text-primary whitespace-nowrap">
+          <span class="px-6 py-2 rounded-full border border-border-light dark:border-border-dark bg-surface-light/60 dark:bg-surface-dark/60 text-text-light dark:text-text-dark font-medium backdrop-blur-sm shadow-sm transition hover:border-primary hover:text-primary whitespace-nowrap">
             {item}
           </span>
         ))

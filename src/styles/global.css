@@ -18,6 +18,7 @@
   --color-background-dark: #0F0F1A;
   /* Fondo más violeta que negro puro */
   --color-section-dark: #161626;
+  --color-section-light-purple: #E8E6F5;
   /* Secciones oscuras con tono morado sutil */
   --color-surface-light: #F8F7FF;
   --color-surface-dark: #1A1828;
@@ -28,8 +29,9 @@
   /* Bordes acordes al tono morado oscuro */
 
   --color-text-light: #24292F;
-  --color-text-contrast-dark: #FFFFFF;
+  --color-text-white: #FFFFFF;
   --color-text-dark: #D8D4EE;
+  --color-text-light-purple: #E8E6F5;
   --color-text-muted-dark: #A7A2C3;
   /* Texto en fondos oscuros, lavanda claro */
   --color-text-muted-light: #6B6B8A;
@@ -41,6 +43,8 @@
   /* Hover coherente con el primario */
 
   --font-display: "Inter", sans-serif;
+
+  --color-light-purple: var(--color-text-light-purple);
 }
 @font-face {
   font-family: 'Inter';
