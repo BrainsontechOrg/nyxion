@@ -27,15 +27,6 @@ const { title = "Nyxion Cybersecurity" } = Astro.props;
     />
     <link rel="preconnect" href="https://api.resend.com" crossorigin />
 
-    <!-- Preload de CSS principal -->
-    <link rel="preload" as="style" href="/_astro/style.css" />
-    <link
-      rel="stylesheet"
-      href="/_astro/style.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript><link rel="stylesheet" href="/_astro/style.css" /></noscript>
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
