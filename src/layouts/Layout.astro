@@ -22,6 +22,28 @@ const { title = "Nyxion Cybersecurity" } = Astro.props;
       defer></script>
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta
+      name="description"
+      content="Nyxion Cybersecurity ofrece servicios avanzados de ciberseguridad en Sevilla. Expertos en auditorías, pentesting y protección digital para empresas."
+    />
+    <meta
+      name="keywords"
+      content="ciberseguridad Sevilla, empresa ciberseguridad, pentesting, seguridad informática, Nyxion Cybersecurity"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta
+      property="og:title"
+      content="Nyxion Cybersecurity | Empresa de Ciberseguridad en Sevilla"
+    />
+    <meta
+      property="og:description"
+      content="Protegemos tu negocio frente a amenazas digitales. Auditorías, pentesting y soluciones avanzadas desde Sevilla."
+    />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:url" content={import.meta.env.PUBLIC_SITE_URL} />
   </head>
 
   <body class="font-display text-text-light dark:text-text-dark">
