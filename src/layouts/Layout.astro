@@ -44,6 +44,35 @@ const { title = "Nyxion Cybersecurity" } = Astro.props;
     <meta property="og:locale" content="es_ES" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:url" content={import.meta.env.PUBLIC_SITE_URL} />
+
+    <link
+      rel="preload"
+      href="/fonts/Inter/Inter-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Inter/Inter-Medium.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Inter/Inter-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Material-Symbols/MaterialSymbolsRounded-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
   </head>
 
   <body class="font-display text-text-light dark:text-text-dark">
