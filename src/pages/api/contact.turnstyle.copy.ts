@@ -23,39 +23,45 @@ const MIN_MESSAGE_LENGTH = 10;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-
-    const origin = request.headers.get("origin");
-
-    if (!origin || !origin.includes(import.meta.env.PUBLIC_SITE_URL)) {
-      console.warn("[Seguridad] Solicitud bloqueada: origen no permitido =>", origin);
-      return new Response(
-        JSON.stringify({ success: false, error: "Origen no permitido." }),
-        { status: 403 }
-      );
-    }
-
     const contentType = request.headers.get("content-type") || "";
     if (!contentType.includes("application/json")) {
-      return new Response(
-        JSON.stringify({ success: false, error: "Solicitud no válida." }),
-        { status: 415 }
-      );
+      return new Response(JSON.stringify({ success: false, error: "Solicitud no válida." }), { status: 415 });
     }
 
     const data = await request.json().catch(() => null);
     if (!data) {
-      return new Response(
-        JSON.stringify({ success: false, error: "Datos enviados no válidos." }),
-        { status: 400 }
-      );
+      return new Response(JSON.stringify({ success: false, error: "Datos enviados no válidos." }), { status: 400 });
     }
 
-    if (data.website) {
-      console.warn("[Antispam] Intento bloqueado por honeypot");
-      return new Response(JSON.stringify({ success: true }), { status: 200 });
+    const { name, email, service, message, "cf-turnstile-response": token } = data;
+
+    // --- Verificación del captcha ---
+    if (token) {
+      console.log("[Turnstile] Token recibido:", token);
+
+      const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          secret: import.meta.env.TURNSTILE_SECRET_KEY,
+          response: token,
+        }),
+      });
+
+      const verifyData = await verifyRes.json();
+      console.log("[Turnstile] Respuesta de verificación:", verifyData);
+
+      if (!verifyData.success) {
+        console.warn("[Turnstile] Token inválido o caducado. Solicitando regeneración...");
+        return new Response(JSON.stringify({ success: false, regenerate: true }), { status: 200 });
+      } else {
+        console.log("[Turnstile] Token válido ✅");
+      }
+    } else {
+      console.warn("[Turnstile] No se recibió token desde el cliente ⚠️");
+      return new Response(JSON.stringify({ success: false, regenerate: true }), { status: 200 });
     }
 
-    const { name, email, service, message } = data;
 
     // --- Validaciones amigables ---
     if (!name || !email || !message) {
@@ -132,7 +138,7 @@ export const POST: APIRoute = async ({ request }) => {
       subject: `NYXION - Nueva consulta desde la web`,
       html: `
         <div style="font-family: Arial, sans-serif; background: #f8fafc; padding: 20px; border-radius: 8px; color: #333;">
-          <h2 style="color: #6A5BF0;">Nueva consulta desde <strong>NYXION</strong></h2>
+          <h2 style="color: #1B365D;">Nueva consulta desde <strong>NYXION</strong></h2>
           <p><strong>Nombre:</strong> ${safeName}</p>
           <p><strong>Email:</strong> ${safeEmail}</p>
           <p><strong>Servicio:</strong> ${readableService}</p>
@@ -143,11 +149,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
-  } catch (err) {
-    console.error("[Contact API] Error interno:", err);
-    return new Response(
-      JSON.stringify({ success: false, error: "Error interno del servidor." }),
-      { status: 500 }
-    );
+  } catch {
+    return new Response(JSON.stringify({ success: false, error: "Error interno del servidor." }), { status: 500 });
   }
 };

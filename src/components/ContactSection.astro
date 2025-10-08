@@ -39,11 +39,18 @@
         id="form"
         method="POST"
         class="space-y-4 rounded-xl bg-background-dark p-6 shadow-lg border border-border-dark">
-        <div
+        <!-- <div
           class="cf-turnstile"
           data-sitekey={import.meta.env.TURNSTILE_SITE_KEY}
           data-theme="dark">
-        </div>
+        </div> -->
+        <input
+          type="text"
+          name="website"
+          tabindex="-1"
+          autocomplete="off"
+          style="display:none"
+        />
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -67,10 +74,10 @@
           </div>
         </div>
 
-        <label for="servicios" class="sr-only">Selecciona un servicio</label>
+        <label for="service" class="sr-only">Selecciona un servicio</label>
         <select
-          name="servicios"
-          id="servicios"
+          name="service"
+          id="service"
           class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary">
           <option value="interes">Servicio de interés</option>
           <option value="preventiva">Ciberseguridad Preventiva</option>
@@ -120,14 +127,7 @@
         });
 
         const result = await res.json();
-
-        // Si el token caducó o fue duplicado → regenerar sin mostrar error
-        if (result.regenerate) {
-          if (typeof turnstile !== "undefined") turnstile.reset();
-          button.disabled = false;
-          button.textContent = "Enviar consulta";
-          return;
-        }
+        console.log("[Contacto] Respuesta del servidor:", result);
 
         if (result.success) {
           notify(
@@ -140,20 +140,17 @@
             ? `❌ ${result.error}`
             : "❌ Ha ocurrido un error. Inténtalo de nuevo.";
           notify(mensaje, "error");
-          if (typeof turnstile !== "undefined") turnstile.reset();
         }
-      } catch {
-        notify(
-          "❌ " + (result.error || "Ha ocurrido un error. Inténtalo de nuevo."),
-          "error",
-        );
+      } catch (error) {
+        console.error("[Contacto] Error de red o servidor:", error);
+        notify("❌ Ha ocurrido un error. Inténtalo de nuevo.", "error");
       } finally {
-        if (typeof turnstile !== "undefined") turnstile.reset();
         button.disabled = false;
         button.textContent = "Enviar consulta";
       }
     });
 
+    // --- Toast de notificación ---
     function notify(message, type = "info") {
       const toast = document.createElement("div");
       toast.textContent = message;
@@ -164,7 +161,9 @@
             ? "bg-red-600"
             : "bg-blue-600"
       }`;
+
       document.body.appendChild(toast);
+
       setTimeout(() => (toast.style.opacity = "1"), 50);
       setTimeout(() => {
         toast.style.opacity = "0";
