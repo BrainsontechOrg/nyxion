@@ -55,6 +55,21 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(JSON.stringify({ success: true }), { status: 200 });
     }
 
+    const verifyRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: import.meta.env.RECAPTCHA_SECRET_KEY,
+        response: data.token,
+      }),
+    });
+
+    const verifyData = await verifyRes.json();
+    if (!verifyData.success || verifyData.score < 0.5) {
+      return new Response(JSON.stringify({ success: false, error: "Captcha inválido o sospechoso." }), { status: 400 });
+    }
+
+
     const { name, email, service, message } = data;
 
     // --- Validaciones amigables ---

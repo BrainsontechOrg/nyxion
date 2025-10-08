@@ -1,3 +1,11 @@
+---
+const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+---
+
+<script
+  is:inline
+  src={"https://www.google.com/recaptcha/api.js?render=" + siteKey}></script>
+
 <section
   id="contacto"
   class="bg-section-dark py-16 sm:py-24 dark:bg-section-dark"
@@ -39,46 +47,27 @@
         id="form"
         method="POST"
         class="space-y-4 rounded-xl bg-background-dark p-6 shadow-lg border border-border-dark">
-        <!-- <div
-          class="cf-turnstile"
-          data-sitekey={import.meta.env.TURNSTILE_SITE_KEY}
-          data-theme="dark">
-        </div> -->
-        <input
-          type="text"
-          name="website"
-          tabindex="-1"
-          autocomplete="off"
-          style="display:none"
-        />
-
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <input
-              type="text"
-              name="name"
-              placeholder="Nombre completo *"
-              required
-              class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary"
-            />
-          </div>
-
-          <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email corporativo *"
-              required
-              class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary"
-            />
-          </div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Nombre completo *"
+            required
+            class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email corporativo *"
+            required
+            class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary"
+          />
         </div>
 
-        <label for="service" class="sr-only">Selecciona un servicio</label>
         <select
           name="service"
           id="service"
-          class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary">
+          class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary">
           <option value="interes">Servicio de interés</option>
           <option value="preventiva">Ciberseguridad Preventiva</option>
           <option value="reactiva">Ciberseguridad Reactiva</option>
@@ -87,16 +76,15 @@
           <option value="consulta">Consulta General</option>
         </select>
 
-        <div>
-          <textarea
-            name="message"
-            placeholder="Cuéntanos brevemente tu situación *"
-            required
-            rows="4"
-            class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary"
-          ></textarea>
-        </div>
+        <textarea
+          name="message"
+          placeholder="Cuéntanos brevemente tu situación *"
+          required
+          rows="4"
+          class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary"
+        ></textarea>
 
+        <!-- ✅ Botón sin data-callback -->
         <button
           type="submit"
           aria-label="Enviar consulta"
@@ -107,7 +95,8 @@
     </div>
   </div>
 </section>
-<script is:inline>
+
+<script is:inline define:vars={{ siteKey }}>
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("#form");
     const button = form.querySelector("button[type='submit']");
@@ -118,8 +107,12 @@
       button.textContent = "Enviando...";
 
       const formData = Object.fromEntries(new FormData(form));
-
       try {
+        const token = await grecaptcha.execute(siteKey, {
+          action: "submit",
+        });
+        formData.token = token;
+
         const res = await fetch("/api/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -127,30 +120,25 @@
         });
 
         const result = await res.json();
-        console.log("[Contacto] Respuesta del servidor:", result);
 
         if (result.success) {
-          notify(
-            "✅ Tu consulta se ha enviado correctamente. En breve un especialista se pondrá en contacto contigo.",
-            "success",
-          );
+          notify("✅ Tu consulta se ha enviado correctamente.", "success");
           form.reset();
         } else {
-          const mensaje = result.error
-            ? `❌ ${result.error}`
-            : "❌ Ha ocurrido un error. Inténtalo de nuevo.";
-          notify(mensaje, "error");
+          notify(
+            result.error || "❌ Ha ocurrido un error. Inténtalo de nuevo.",
+            "error",
+          );
         }
       } catch (error) {
-        console.error("[Contacto] Error de red o servidor:", error);
-        notify("❌ Ha ocurrido un error. Inténtalo de nuevo.", "error");
+        console.error("[Contacto] Error:", error);
+        notify("❌ Ha ocurrido un error inesperado.", "error");
       } finally {
         button.disabled = false;
         button.textContent = "Enviar consulta";
       }
     });
 
-    // --- Toast de notificación ---
     function notify(message, type = "info") {
       const toast = document.createElement("div");
       toast.textContent = message;
@@ -161,9 +149,7 @@
             ? "bg-red-600"
             : "bg-blue-600"
       }`;
-
       document.body.appendChild(toast);
-
       setTimeout(() => (toast.style.opacity = "1"), 50);
       setTimeout(() => {
         toast.style.opacity = "0";
