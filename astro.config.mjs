@@ -6,9 +6,11 @@ import netlify from '@astrojs/netlify';
 
 import sitemap from '@astrojs/sitemap';
 
+import vercel from '@astrojs/vercel';
+
 export default defineConfig({
   output: 'server',
-  adapter: netlify(),
+  adapter: vercel(),
 
   vite: {
     plugins: [tailwindcss()],
