@@ -15,6 +15,7 @@
     "@astrojs/vercel": "^8.2.8",
     "@tailwindcss/vite": "^4.1.14",
     "astro": "^5.14.1",
+    "astro-critters": "^2.2.1",
     "resend": "^6.1.2",
     "tailwindcss": "^4.1.14"
   }
