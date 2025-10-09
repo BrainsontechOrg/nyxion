@@ -5,28 +5,33 @@ const servicios = [
     titulo: "Ciberseguridad Preventiva",
     items: [
       {
-        titulo: "Auditoría de Seguridad Integral",
+        titulo: "Auditorías Web",
         descripcion:
-          "Evaluación de riesgos y madurez: nube, endpoints, redes y aplicaciones.",
+          "Identificación manual de vulnerabilidades en sitios y aplicaciones web.",
         puntos: [
-          "Inventario y priorización de activos",
-          "Gap analysis vs. buenas prácticas",
-          "Roadmap de remediación",
+          "Metodología OWASP",
+          "Informe técnico y ejecutivo",
+          "Recomendaciones de mitigación",
         ],
       },
       {
-        titulo: "Pentesting Web & Apps",
+        titulo: "Informes de Presencia en Deep Web",
         descripcion:
-          "Pruebas de intrusión manuales con reporte ejecutivo y técnico.",
-        puntos: ["OWASP Top 10", "Evidencias y PoC", "Re-test incluido"],
+          "Análisis de exposición de datos corporativos o personales en la deep y dark web.",
+        puntos: [
+          "Búsqueda de fugas de credenciales",
+          "Monitorización de menciones y filtraciones",
+          "Alertas de exposición detectada",
+        ],
       },
       {
-        titulo: "Seguridad de Redes & WiFi",
-        descripcion: "Hardening de infraestructura y segmentación efectiva.",
+        titulo: "Auditorías de Infraestructura, WiFi y Apps Móviles",
+        descripcion:
+          "Evaluación técnica completa de redes, sistemas y aplicaciones móviles.",
         puntos: [
-          "Configuración segura",
-          "Pruebas de cobertura",
-          "Accesos privilegiados",
+          "Pruebas de seguridad en red y WiFi",
+          "Hardening de servidores y routers",
+          "Análisis de permisos y APIs móviles",
         ],
       },
     ],
@@ -36,27 +41,43 @@ const servicios = [
     titulo: "Ciberseguridad Reactiva",
     items: [
       {
-        titulo: "Respuesta a Incidentes",
+        titulo: "Análisis Forense de Incidentes",
         descripcion:
-          "Contención, erradicación y recuperación con guía de crisis.",
+          "Investigación técnica de dispositivos afectados por incidentes de seguridad.",
         puntos: [
-          "Playbooks efectivos",
-          "Restauración priorizada",
-          "Lecciones aprendidas",
+          "Adquisición y análisis de evidencias",
+          "Reconstrucción temporal de eventos",
+          "Informe forense detallado",
         ],
       },
       {
-        titulo: "Forense Digital",
-        descripcion: "Adquisición, análisis y preservación de evidencias.",
-        puntos: ["Timeline & IOC hunting", "Informe pericial", "Soporte legal"],
+        titulo: "Asesoramiento en Corrección de Vulnerabilidades",
+        descripcion:
+          "Guía técnica para aplicar medidas correctivas y validar su efectividad.",
+        puntos: [
+          "Priorización de riesgos",
+          "Implementación guiada de soluciones",
+          "Verificación post-corrección",
+        ],
       },
       {
-        titulo: "Remediación de Vulnerabilidades",
-        descripcion: "Correcciones guiadas y verificación de efectividad.",
+        titulo: "Peritaje Informático",
+        descripcion:
+          "Elaboración de informes periciales válidos ante procesos legales o internos.",
         puntos: [
-          "Parcheo y hardening",
-          "Revisión de accesos",
-          "Validación post-fix",
+          "Cadena de custodia",
+          "Análisis técnico especializado",
+          "Informe pericial certificado",
+        ],
+      },
+      {
+        titulo: "Recuperación de Datos Borrados",
+        descripcion:
+          "Servicio especializado para recuperar datos eliminados o formateados en distintos dispositivos.",
+        puntos: [
+          "Análisis previo de viabilidad",
+          "Recuperación lógica y física",
+          "Informe de resultados",
         ],
       },
     ],
@@ -66,28 +87,24 @@ const servicios = [
     titulo: "Ciberseguridad Avanzada",
     items: [
       {
-        titulo: "Monitorización 24/7 (SOC/SIEM)",
-        descripcion: "Detección temprana y respuesta coordinada.",
-        puntos: [
-          "Casos de uso a medida",
-          "Alertas priorizadas",
-          "Informes ejecutivos",
-        ],
-      },
-      {
-        titulo: "Threat Hunting & Intel",
-        descripcion: "Búsqueda proactiva de amenazas y TTPs relevantes.",
-        puntos: [
-          "Detecciones hipotéticas",
-          "IOC/IOA feed",
-          "Mitre ATT&CK mapping",
-        ],
-      },
-      {
-        titulo: "Protección de Correo y Nube",
+        titulo: "Monitorización Activa de Infraestructura y Correo",
         descripcion:
-          "Controles avanzados para O365/Google Workspace y nubes públicas.",
-        puntos: ["DMARC, DKIM, SPF", "CASB / posture", "Automatización (SOAR)"],
+          "Supervisión continua de servidores, redes y plataformas en la nube para detectar amenazas en tiempo real.",
+        puntos: [
+          "Integración con Wazuh u otras soluciones SIEM",
+          "Alertas automáticas y respuesta inmediata",
+          "Informes periódicos de actividad",
+        ],
+      },
+      {
+        titulo: "Phishing Controlado",
+        descripcion:
+          "Simulaciones de ataque para evaluar la madurez y respuesta del personal ante intentos de suplantación.",
+        puntos: [
+          "Campañas realistas personalizadas",
+          "Evaluación de resultados",
+          "Informe con acciones de mejora",
+        ],
       },
     ],
   },
@@ -96,30 +113,23 @@ const servicios = [
     titulo: "Formación y Concienciación",
     items: [
       {
-        titulo: "Charlas & Talleres",
-        descripcion: "Sesiones prácticas orientadas a negocio y TI.",
+        titulo: "Charlas y Talleres",
+        descripcion:
+          "Sesiones prácticas adaptadas a distintos niveles y áreas de la organización.",
         puntos: [
-          "Buenas prácticas",
-          "Gestión de contraseñas",
-          "Seguridad móvil",
+          "Buenas prácticas de ciberseguridad",
+          "Gestión de contraseñas y accesos",
+          "Buenas prácticas de seguridad digital en el trabajo diario",
         ],
       },
       {
-        titulo: "Simulacros de Phishing",
-        descripcion: "Campañas medibles con micro-learning.",
+        titulo: "Formación por Roles",
+        descripcion:
+          "Programas adaptados a las funciones de cada perfil profesional.",
         puntos: [
-          "Plantillas realistas",
-          "KPIs por equipo",
-          "Refuerzo inmediato",
-        ],
-      },
-      {
-        titulo: "Programas a Medida",
-        descripcion: "Formación por rol: directivos, finanzas, IT & soporte.",
-        puntos: [
-          "Calendario trimestral",
-          "Materiales reutilizables",
-          "Certificados",
+          "Directivos y personal de gestión",
+          "Departamentos técnicos y financieros",
+          "Desarrolladores y soporte",
         ],
       },
     ],

@@ -27,16 +27,27 @@ import Nav from "@/components/Nav.astro";
         </svg>
       </button>
 
-      <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 48 48">
-        <path
-          clip-rule="evenodd"
-          d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
-          fill="currentColor"
-          fill-rule="evenodd"></path>
-      </svg>
-      <h2 class="text-2xl font-bold text-white">Nyxion</h2>
+      <!-- Logo clicable -->
+      <a href="/#inicio" class="flex items-center gap-2 scroll-smooth">
+        <svg class="h-8 w-8 text-primary" fill="none" viewBox="0 0 48 48">
+          <path
+            clip-rule="evenodd"
+            d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z"
+            fill="currentColor"
+            fill-rule="evenodd"></path>
+        </svg>
+        <h2 class="text-2xl font-bold text-white">Nyxion</h2>
+      </a>
     </div>
 
+    <!-- Botón visible solo en móvil -->
+    <a
+      href="/#contacto"
+      class="lg:hidden rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-blue transition-colors">
+      Contáctanos
+    </a>
+
+    <!-- Navegación (desktop + menú móvil) -->
     <Nav />
   </div>
 </header>

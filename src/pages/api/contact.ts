@@ -70,10 +70,10 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
 
-    const { name, email, service, message } = data;
+    const { name, email, phone, service, message } = data;
 
-    // --- Validaciones amigables ---
-    if (!name || !email || !message) {
+    // --- Validaciones ---
+    if (!name || !email || !phone || !message) {
       return new Response(
         JSON.stringify({ success: false, error: "Por favor, completa todos los campos obligatorios." }),
         { status: 400 }
@@ -108,14 +108,28 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    if (phone && !/^(?:\+34|0034)?\s?[6789]\d{2}[\s-]?\d{3}[\s-]?\d{3}$/.test(phone)) {
+      return new Response(
+        JSON.stringify({ success: false, error: "Introduce un número de teléfono válido" }),
+        { status: 400 }
+      );
+    }
+
+
     const ALLOWED_SERVICES = new Set([
       "preventiva",
       "reactiva",
       "avanzada",
       "formacion",
-      "consulta",
-      "interes",
+      "consulta"
     ]);
+
+    if (!service || service === "interes") {
+      return new Response(
+        JSON.stringify({ success: false, error: "Debes seleccionar un servicio." }),
+        { status: 400 }
+      );
+    }
 
     if (!ALLOWED_SERVICES.has(service)) {
       return new Response(
@@ -124,19 +138,34 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    if (phone) {
+      const cleanPhone = phone.replace(/[\s-]/g, "");
+
+      const isValidSpanishPhone = /^(?:\+34|0034)?[6789]\d{8}$/.test(cleanPhone);
+
+      if (!isValidSpanishPhone) {
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: "Introduce un número de teléfono válido de España.",
+          }),
+          { status: 400 }
+        );
+      }
+    }
+
     // --- Escapado seguro ---
     const safeName = escapeHTML(name);
     const safeEmail = escapeHTML(email);
-    const safeService = escapeHTML(service || "—");
     const safeMessage = escapeHTML(message);
+    const safePhone = escapeHTML(phone || "—");
 
     const SERVICE_LABELS: Record<string, string> = {
       preventiva: "Ciberseguridad Preventiva",
       reactiva: "Ciberseguridad Reactiva",
       avanzada: "Ciberseguridad Avanzada",
       formacion: "Formación y Concienciación",
-      consulta: "Consulta General",
-      interes: "Servicio de interés",
+      consulta: "Consulta General"
     };
     const readableService = SERVICE_LABELS[service] || "Otro";
 
@@ -150,6 +179,7 @@ export const POST: APIRoute = async ({ request }) => {
           <h2 style="color: #6A5BF0;">Nueva consulta desde <strong>NYXION</strong></h2>
           <p><strong>Nombre:</strong> ${safeName}</p>
           <p><strong>Email:</strong> ${safeEmail}</p>
+          <p><strong>Teléfono:</strong> ${safePhone}</p>
           <p><strong>Servicio:</strong> ${readableService}</p>
           <hr style="border:none;border-top:1px solid #ddd;margin:20px 0;" />
           <p><strong>Mensaje:</strong></p>

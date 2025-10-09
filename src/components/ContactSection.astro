@@ -33,7 +33,7 @@ const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
           </div>
           <div class="flex items-center gap-3">
             <span class="material-symbols-rounded text-primary">mail</span>
-            <span>info@nyxioncybersecurity.com</span>
+            <span>info@nyxionsec.com</span>
           </div>
           <div class="flex items-center gap-3">
             <span class="material-symbols-rounded text-primary">call</span>
@@ -64,17 +64,28 @@ const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
           />
         </div>
 
-        <select
-          name="service"
-          id="service"
-          class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary">
-          <option value="interes">Servicio de interés</option>
-          <option value="preventiva">Ciberseguridad Preventiva</option>
-          <option value="reactiva">Ciberseguridad Reactiva</option>
-          <option value="avanzada">Ciberseguridad Avanzada</option>
-          <option value="formacion">Formación y Concienciación</option>
-          <option value="consulta">Consulta General</option>
-        </select>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Teléfono de contacto *"
+            pattern="[0-9+\s()-]{6,20}"
+            title="Introduce un número de teléfono válido"
+            class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary"
+          />
+
+          <select
+            name="service"
+            id="service"
+            class="w-full rounded-lg border border-border-dark bg-surface-dark px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary">
+            <option value="" hidden selected>Selecciona un servicio</option>
+            <option value="preventiva">Ciberseguridad Preventiva</option>
+            <option value="reactiva">Ciberseguridad Reactiva</option>
+            <option value="avanzada">Ciberseguridad Avanzada</option>
+            <option value="formacion">Formación y Concienciación</option>
+            <option value="consulta">Consulta General</option>
+          </select>
+        </div>
 
         <textarea
           name="message"
@@ -122,7 +133,7 @@ const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
         const result = await res.json();
 
         if (result.success) {
-          notify("✅ Tu consulta se ha enviado correctamente.", "success");
+          notify("Tu consulta se ha enviado correctamente.", "success");
           form.reset();
         } else {
           notify(
@@ -140,21 +151,49 @@ const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
     });
 
     function notify(message, type = "info") {
+      const existing = document.getElementById("nyxion-toast");
+      if (existing) existing.remove(); // Evita duplicados
+
       const toast = document.createElement("div");
-      toast.textContent = message;
-      toast.className = `fixed bottom-6 right-6 px-4 py-3 rounded-lg shadow-lg text-white text-sm z-50 transition-opacity duration-300 opacity-0 ${
-        type === "success"
-          ? "bg-green-600"
-          : type === "error"
-            ? "bg-red-600"
-            : "bg-blue-600"
-      }`;
+      toast.id = "nyxion-toast";
+      toast.innerHTML = `
+    <div class="flex items-center gap-3">
+      <span class="material-symbols-rounded text-lg">
+        ${type === "success" ? "check_circle" : type === "error" ? "error" : "info"}
+      </span>
+      <span class="text-sm font-medium">${message}</span>
+    </div>
+  `;
+
+      // 🔹 Estilos corporativos Nyxion (modernos, sutiles y arriba a la derecha)
+      toast.className = `
+    fixed top-6 right-6 flex items-center
+    px-4 py-3 rounded-lg shadow-xl border
+    backdrop-blur-md z-50 transition-all duration-300
+    opacity-0 translate-y-[-10px]
+    ${
+      type === "success"
+        ? "bg-green-600/90 border-green-400 text-white"
+        : type === "error"
+          ? "bg-red-600/90 border-red-400 text-white"
+          : "bg-primary/90 border-primary-light text-white"
+    }
+  `;
+
       document.body.appendChild(toast);
-      setTimeout(() => (toast.style.opacity = "1"), 50);
+
+      // 🎬 Animación de entrada
+      setTimeout(() => {
+        toast.style.opacity = "1";
+        toast.style.transform = "translateY(0)";
+      }, 50);
+
+      // ⏰ Desaparición progresiva
       setTimeout(() => {
         toast.style.opacity = "0";
+        toast.style.transform = "translateY(-10px)";
         setTimeout(() => toast.remove(), 300);
-      }, 3500);
+      }, 4000);
     }
   });
 </script>
