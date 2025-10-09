@@ -3,9 +3,9 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 import vercel from '@astrojs/vercel';
-import critters from 'astro-critters';
 
 export default defineConfig({
+  site: process.env.PUBLIC_SITE_URL,
   output: 'server',
   adapter: vercel(),
 
@@ -17,10 +17,7 @@ export default defineConfig({
     }
   },
   site: process.env.PUBLIC_SITE_URL,
-  integrations: [sitemap(), critters({
-    preload: 'swap',
-    pruneSource: true,
-  }),],
+  integrations: [sitemap()],
   server: {
     'Access-Control-Allow-Origin': '*',
 
