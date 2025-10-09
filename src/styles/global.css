@@ -121,6 +121,9 @@ html {
   scroll-padding-top: 5rem;
 }
 
+h1 {
+  font-size: inherit;
+}
 
 
 

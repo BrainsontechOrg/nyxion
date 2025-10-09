@@ -2,11 +2,13 @@
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
+import "@/styles/global.css";
 import stylesUrl from "@/styles/global.css?url";
 
 const { title = "Nyxion" } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -18,15 +20,8 @@ const { title = "Nyxion" } = Astro.props;
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href={stylesUrl} fetchpriority="high" />
 
-    <link
-      rel="preload"
-      href={stylesUrl}
-      as="style"
-      onload="this.rel='stylesheet'"
-    />
-    <noscript><link rel="stylesheet" href={stylesUrl} /></noscript>
-    
     <link rel="preconnect" href="https://api.resend.com" crossorigin />
 
     <meta name="generator" content={Astro.generator} />
