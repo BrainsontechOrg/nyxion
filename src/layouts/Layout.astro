@@ -19,6 +19,14 @@ const { title = "Nyxion" } = Astro.props;
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="preload"
+      as="video"
+      href="/assets/video/video3_opt.mp4"
+      type="video/mp4"
+      fetchpriority="high"
+    />
+
     <link rel="stylesheet" href={stylesUrl} fetchpriority="high" />
 
     <link rel="preconnect" href="https://api.resend.com" crossorigin />

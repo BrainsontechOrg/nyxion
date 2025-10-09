@@ -2,11 +2,13 @@
   class="relative h-[65vh] flex items-center justify-center overflow-hidden"
   aria-labelledby="header-title"
   id="inicio">
+  {/* @ts-ignore */}
   <video
     autoplay
     muted
     loop
     playsinline
+    fetchpriority="high"
     preload="metadata"
     class="absolute inset-0 w-full h-full object-cover">
     <source src="/assets/video/video3_opt.mp4" type="video/mp4" />
