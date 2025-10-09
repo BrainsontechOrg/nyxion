@@ -1,7 +1,7 @@
 ---
-import "@/styles/global.css";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import stylesUrl from "@/styles/global.css";
 
 const { title = "Nyxion" } = Astro.props;
 ---
@@ -9,18 +9,6 @@ const { title = "Nyxion" } = Astro.props;
 <!doctype html>
 <html lang="es">
   <head>
-    <slot name="head" />
-    {
-      import.meta.env.DEV ? null : (
-        <script>
-          {`
-              document.querySelectorAll('link[rel="stylesheet"]').forEach(l => {
-                l.setAttribute('fetchpriority', 'high');
-              });
-            `}
-        </script>
-      )
-    }
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -31,8 +19,8 @@ const { title = "Nyxion" } = Astro.props;
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <link rel="preload" href={stylesUrl} as="style" />
     <link rel="preconnect" href="https://api.resend.com" crossorigin />
-
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta
