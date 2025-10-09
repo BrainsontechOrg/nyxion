@@ -27,9 +27,10 @@ const { title = "Nyxion" } = Astro.props;
       fetchpriority="high"
     />
 
-    <link rel="stylesheet" href={stylesUrl} fetchpriority="high" />
+    <link rel="preload" href={stylesUrl} as="style" fetchpriority="high" />
+    <link rel="stylesheet" href={stylesUrl} />
 
-    <link rel="preconnect" href="https://api.resend.com" crossorigin />
+    <link href="https://api.resend.com" crossorigin />
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -56,7 +57,7 @@ const { title = "Nyxion" } = Astro.props;
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:url" content={import.meta.env.PUBLIC_SITE_URL} />
 
-    <link rel="preconnect" href={import.meta.env.PUBLIC_SITE_URL} crossorigin />
+    <link href={import.meta.env.PUBLIC_SITE_URL} crossorigin />
 
     <link
       rel="preload"
