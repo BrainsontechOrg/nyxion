@@ -38,7 +38,7 @@ export default defineConfig({
       "img-src 'self' data: https:;",
       "font-src 'self' data: https://fonts.gstatic.com;",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;",
-      "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com;",
+      "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com;",
       "connect-src 'self' https://api.resend.com https://challenges.cloudflare.com;",
       "frame-src 'self' https://challenges.cloudflare.com;",
     ].join(' '),
