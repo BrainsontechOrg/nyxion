@@ -18,7 +18,7 @@
   <!-- Contenido centrado -->
   <div class="relative z-10 text-center px-4">
     <h1
-      class="text-3xl sm:text-4xl font-extrabold text-white"
+      class="!text-4xl sm:!text-5xl font-extrabold text-white text-center"
       id="header-title">
       Tu defensa digital empieza aquí
     </h1>
@@ -40,7 +40,7 @@
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     const video = document.querySelector(".lazy-video");
-    if (!video) return; // ✅ evita el error si no existe
+    if (!video) return;
 
     const source = document.createElement("source");
     source.src = "/assets/video/video3_opt.mp4";
