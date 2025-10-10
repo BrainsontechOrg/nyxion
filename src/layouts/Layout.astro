@@ -30,7 +30,7 @@ const { title = "Nyxion" } = Astro.props;
     <link rel="preload" href={stylesUrl} as="style" fetchpriority="high" />
     <link rel="stylesheet" href={stylesUrl} />
 
-    <link rel="preconnect" href="https://api.resend.com" crossorigin />
+    <link href="https://api.resend.com" crossorigin />
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -67,21 +67,18 @@ const { title = "Nyxion" } = Astro.props;
       crossorigin
     />
     <link
-      rel="preload"
       href="/fonts/Inter/Inter-Medium.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
-      rel="preload"
       href="/fonts/Inter/Inter-Bold.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
-      rel="preload"
       href="/fonts/Material-Symbols/MaterialSymbolsRounded-Regular.woff2"
       as="font"
       type="font/woff2"
