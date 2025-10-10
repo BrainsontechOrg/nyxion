@@ -171,8 +171,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     // --- Enviar correo ---
     await resend.emails.send({
-      from: "Nyxion <info@brainsontech.com>",
-      to: ["info@brainsontech.com"],
+      from: "Nyxion <info@nyxionsec.com>",
+      to: ["info@nyxionsec.com"],
       subject: `NYXION - Nueva consulta desde la web`,
       html: `
         <div style="font-family: Arial, sans-serif; background: #f8fafc; padding: 20px; border-radius: 8px; color: #333;">
