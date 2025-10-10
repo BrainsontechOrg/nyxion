@@ -7,19 +7,10 @@
     muted
     loop
     playsinline
-    preload="metadata"
-    class="absolute inset-0 w-full h-full object-cover"
-    poster="/assets/video/video3_opt.webp">
-    <source src="/assets/video/video3_opt_4mb.mp4" type="video/mp4" />
-    <track
-      kind="captions"
-      srclang="es"
-      label="Subtítulos"
-      src="/assets/video/video3.vtt"
-      default
-    />
+    preload="none"
+    poster="/assets/video/video3_opt.webp"
+    class="absolute inset-0 w-full h-full object-cover lazy-video">
   </video>
-
   <!-- Capa oscura encima del vídeo -->
   <div class="absolute inset-0 bg-black/60"></div>
 
@@ -45,3 +36,22 @@
     </div>
   </div>
 </section>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector(".lazy-video");
+    if (!video) return;
+
+    const source = document.createElement("source");
+    source.src = "/assets/video/video3_opt_4mb.mp4";
+    source.type = "video/mp4";
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        video.appendChild(source);
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(video);
+  });
+</script>
