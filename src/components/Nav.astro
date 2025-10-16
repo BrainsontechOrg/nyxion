@@ -1,7 +1,16 @@
 ---
 const links = [
   { label: "Confían en Nyxion", href: "/#confianza" },
-  { label: "Servicios", href: "/#servicios" },
+  {
+    label: "Servicios",
+    href: "/#servicios",
+    sublinks: [
+      { label: "Ciberseguridad Preventiva", href: "/servicios/ciberseguridad-preventiva" },
+      { label: "Ciberseguridad Reactiva", href: "/servicios/ciberseguridad-reactiva" },
+      { label: "Ciberseguridad Avanzada", href: "/servicios/ciberseguridad-avanzada" },
+      { label: "Formación y Concienciación", href: "/servicios/formacion" },
+    ],
+  },
   { label: "Por qué Nyxion", href: "/#por-que-nyxion" },
   { label: "Nuestro Proceso", href: "/#nuestro-proceso" },
   { label: "Resultados", href: "/#resultados" },
@@ -9,14 +18,42 @@ const links = [
 ];
 ---
 
-<nav class="hidden lg:flex items-center gap-8">
+<!-- 🌐 Menú escritorio -->
+<nav class="hidden lg:flex items-center gap-8 relative">
   {
     links.map((link) => (
-      <a
-        class="text-sm font-medium text-text-white hover:text-primary-light transition-colors"
-        href={link.href}>
-        {link.label}
-      </a>
+      link.sublinks ? (
+        <div class="relative group">
+          <a
+            href={link.href}
+            class="text-sm font-medium text-text-white hover:text-primary-light transition-colors flex items-center gap-1">
+            {link.label}
+            <span class="material-symbols-rounded text-xs transition-transform duration-200 group-hover:rotate-180">
+              expand_more
+            </span>
+          </a>
+
+          <!-- Submenú -->
+          <div
+            class="absolute left-0 top-full hidden group-hover:flex flex-col bg-surface-light dark:bg-surface-dark shadow-lg rounded-lg py-2 min-w-[220px] group-hover:visible">
+            {
+              link.sublinks.map((sublink) => (
+                <a
+                  href={sublink.href}
+                  class="px-4 py-2 text-sm text-text-light dark:text-text-dark hover:text-primary-light hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+                  {sublink.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      ) : (
+        <a
+          class="text-sm font-medium text-text-white hover:text-primary-light transition-colors"
+          href={link.href}>
+          {link.label}
+        </a>
+      )
     ))
   }
 
@@ -27,17 +64,39 @@ const links = [
   </a>
 </nav>
 
-<!-- Menú móvil -->
+<!-- 📱 Menú móvil -->
 <nav
   id="mobile-nav"
   class="absolute left-0 top-20 w-full bg-surface-light dark:bg-surface-dark p-6 flex flex-col gap-4 lg:hidden hidden shadow-lg">
   {
     links.map((link) => (
-      <a
-        class="text-base font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors"
-        href={link.href}>
-        {link.label}
-      </a>
+      link.sublinks ? (
+        <details class="group">
+          <summary class="flex justify-between items-center cursor-pointer text-base font-semibold text-text-light dark:text-text-dark hover:text-primary transition-colors">
+            {link.label}
+            <span class="material-symbols-rounded text-primary transition-transform duration-300 group-open:rotate-180">
+              expand_more
+            </span>
+          </summary>
+          <div class="ml-4 mt-2 flex flex-col gap-2">
+            {
+              link.sublinks.map((sublink) => (
+                <a
+                  href={sublink.href}
+                  class="text-sm text-text-light dark:text-text-dark hover:text-primary-light transition-colors">
+                  {sublink.label}
+                </a>
+              ))
+            }
+          </div>
+        </details>
+      ) : (
+        <a
+          class="text-base font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors"
+          href={link.href}>
+          {link.label}
+        </a>
+      )
     ))
   }
 

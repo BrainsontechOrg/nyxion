@@ -6,6 +6,7 @@ const servicios = [
     items: [
       {
         titulo: "Auditorías Web",
+        slug: "auditorias-web",
         descripcion:
           "Identificación manual de vulnerabilidades en sitios y aplicaciones web.",
         puntos: [
@@ -16,6 +17,7 @@ const servicios = [
       },
       {
         titulo: "Informes de Presencia en Deep Web",
+        slug: "informes-presencia-deep-web",
         descripcion:
           "Análisis de exposición de datos corporativos o personales en la deep y dark web.",
         puntos: [
@@ -26,6 +28,7 @@ const servicios = [
       },
       {
         titulo: "Auditorías de Infraestructura, WiFi y Apps Móviles",
+        slug: "auditorias-infraestructura-wifi-app-movil",
         descripcion:
           "Evaluación técnica completa de redes, sistemas y aplicaciones móviles.",
         puntos: [
@@ -42,6 +45,7 @@ const servicios = [
     items: [
       {
         titulo: "Análisis Forense de Incidentes",
+        slug: "analisis-forense",
         descripcion:
           "Investigación técnica de dispositivos afectados por incidentes de seguridad.",
         puntos: [
@@ -52,6 +56,7 @@ const servicios = [
       },
       {
         titulo: "Asesoramiento en Corrección de Vulnerabilidades",
+        slug: "asesoramiento-correccion-vulnerabilidades",
         descripcion:
           "Guía técnica para aplicar medidas correctivas y validar su efectividad.",
         puntos: [
@@ -62,6 +67,7 @@ const servicios = [
       },
       {
         titulo: "Peritaje Informático",
+        slug: "peritaje-informatico",
         descripcion:
           "Elaboración de informes periciales válidos ante procesos legales o internos.",
         puntos: [
@@ -72,6 +78,7 @@ const servicios = [
       },
       {
         titulo: "Recuperación de Datos Borrados",
+        slug: "recuperacion-datos-borrados",
         descripcion:
           "Servicio especializado para recuperar datos eliminados o formateados en distintos dispositivos.",
         puntos: [
@@ -88,6 +95,7 @@ const servicios = [
     items: [
       {
         titulo: "Monitorización Activa de Infraestructura y Correo",
+        slug: "monitorizacion-activa-infraestructura-correo",
         descripcion:
           "Supervisión continua de servidores, redes y plataformas en la nube para detectar amenazas en tiempo real.",
         puntos: [
@@ -98,6 +106,7 @@ const servicios = [
       },
       {
         titulo: "Phishing Controlado",
+        slug: "phishing-controlado",
         descripcion:
           "Simulaciones de ataque para evaluar la madurez y respuesta del personal ante intentos de suplantación.",
         puntos: [
@@ -114,6 +123,7 @@ const servicios = [
     items: [
       {
         titulo: "Charlas y Talleres",
+        slug: "charlas-y-talleres",
         descripcion:
           "Sesiones prácticas adaptadas a distintos niveles y áreas de la organización.",
         puntos: [
@@ -124,6 +134,7 @@ const servicios = [
       },
       {
         titulo: "Formación por Roles",
+        slug: "formacion-por-roles",
         descripcion:
           "Programas adaptados a las funciones de cada perfil profesional.",
         puntos: [
@@ -196,7 +207,7 @@ const servicios = [
             role="region"
             aria-label={s.titulo}>
             {s.items.map((item) => (
-              <article class="rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark transition-transform hover:scale-[1.01]">
+              <article class="flex flex-col rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark transition-transform hover:scale-[1.01]">
                 <h3 class="font-bold text-lg text-text-light dark:text-white">
                   {item.titulo}
                 </h3>
@@ -208,6 +219,12 @@ const servicios = [
                     <li>{p}</li>
                   ))}
                 </ul>
+
+                <a
+                  href={`/servicios/ciberseguridad-${s.tipo}#${item.slug}`}
+                  class="mt-auto self-end rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-blue transition-colors">
+                  Descubrir más
+                </a>
               </article>
             ))}
           </div>

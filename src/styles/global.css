@@ -3,50 +3,52 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #6A5BF0;
-  /* Morado oscuro principal */
-  --color-primary-light: #9A8BFF;
-  /* Para hover o acentos claros */
-  --color-secondary-blue: #5A4BCF;
-  /* Sustituye al azul intermedio */
-  --color-teal: #5DE6DE;
-  /* Mantiene contraste con el video (turquesa suave) */
-  --color-accent: #8C7AE6;
-  /* Complemento lavanda */
+  --color-primary: #0085BD;
+  /* Azul principal (del logo) */
+
+  --color-primary-light: #4FB5E0;
+  /* Azul claro para hover o acentos suaves */
+
+  --color-secondary-blue: #006F9F;
+  /* Azul más oscuro para contrastes y botones secundarios */
+
+  --color-teal: #47E2D6;
+  /* Turquesa complementario (mantiene frescura visual) */
+
+  --color-accent: #00B8D9;
+  /* Azul brillante para destacar o resaltar enlaces */
 
   --color-background-light: #FFFFFF;
-  --color-background-dark: #0F0F1A;
-  /* Fondo más violeta que negro puro */
-  --color-section-dark: #161626;
-  --color-section-light-purple: #E8E6F5;
-  /* Secciones oscuras con tono morado sutil */
-  --color-surface-light: #F8F7FF;
-  --color-surface-dark: #1A1828;
+  --color-background-dark: #0C1116;
+  /* Fondo neutro oscuro con tono azulado */
+  --color-section-dark: #111A22;
+  --color-section-light-blue: #E6F5FA;
+  /* Sustituto del morado claro, suave celeste */
+  --color-surface-light: #F3FAFD;
+  --color-surface-dark: #162029;
 
+  --color-border-light: #C9E6F0;
+  --color-border-dark: #1E2A35;
+  /* Bordes adaptados al esquema azul */
 
-  --color-border-light: #D0D7DE;
-  --color-border-dark: #2E2B40;
-  /* Bordes acordes al tono morado oscuro */
-
-  --color-text-light: #24292F;
+  --color-text-light: #1B2730;
   --color-text-white: #FFFFFF;
-  --color-text-dark: #D8D4EE;
-  --color-text-light-purple: #E8E6F5;
-  --color-text-muted-dark: #A7A2C3;
-  /* Texto en fondos oscuros, lavanda claro */
-  --color-text-muted-light: #4c4c66;
-  --color-text-muted-dark: #A0A0B8;
+  --color-text-dark: #D6E6F2;
+  --color-text-light-blue: #E6F5FA;
+  --color-text-muted-dark: #9DB7C7;
+  /* Texto en fondos oscuros */
+  --color-text-muted-light: #4C6370;
 
-  --color-text-results: #7C6FF2;
-  /* Texto secundario más elegante */
+  --color-text-results: #009CD8;
+  /* Azul intermedio elegante */
 
-  --color-hover-light: #1B152D;
-  --color-hover-dark: #7C6FF2;
+  --color-hover-light: #10232E;
+  --color-hover-dark: #00A4D4;
   /* Hover coherente con el primario */
 
   --font-display: "Inter", sans-serif;
 
-  --color-light-purple: var(--color-text-light-purple);
+  --color-light-blue: var(--color-text-light-blue);
 }
 @font-face {
   font-family: 'Inter';
