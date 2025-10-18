@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #0085BD;
+  --color-primary: #00648F;
   /* Azul principal (del logo) */
 
   --color-primary-light: #4FB5E0;

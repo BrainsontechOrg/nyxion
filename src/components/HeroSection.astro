@@ -1,17 +1,31 @@
 <section
-  class="relative h-[65vh] flex items-center justify-center overflow-hidden"
+  id="inicio"
+  class="relative h-[75vh] sm:h-[80vh] flex items-center justify-center overflow-hidden"
   aria-labelledby="header-title"
-  id="inicio">
-  <video
-  id="hero-video"
-  aria-hidden="true"
-  class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 pointer-events-none"
-  poster="/assets/video/video3_opt.webp"
-  muted
-  playsinline
-  fetchpriority="high"
-></video>
+>
+  <!-- Imagen del póster visible para mejorar el LCP -->
+  <img
+    src="/assets/video/portada.webp"
+    alt="Ciberseguridad Nyxion"
+    fetchpriority="high"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
 
+  <!-- Vídeo optimizado -->
+  <video
+    id="hero-video"
+    aria-hidden="true"
+    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 pointer-events-none"
+    poster="/assets/video/portada.webp"
+    muted
+    playsinline
+    preload="none"
+    loop
+  >
+
+    <source src="/assets/video/portada.mp4" type="video/mp4" />
+  </video>
 
   <!-- Capa oscura encima del vídeo -->
   <div class="absolute inset-0 bg-black/60"></div>
@@ -19,30 +33,28 @@
   <!-- Contenido centrado -->
   <div class="relative z-10 text-center px-4">
     <h1
+      id="header-title"
       class="!text-4xl sm:!text-5xl font-extrabold text-white text-center"
-      id="header-title">
+    >
       Tu defensa digital empieza aquí
     </h1>
+
     <p class="mt-3 text-lg sm:text-xl font-semibold italic text-white/90">
-      “Seguridad en casa. Seguridad en el trabajo. Para particulares y
-      empresas.”
+      “Seguridad en casa. Seguridad en el trabajo. Para particulares y empresas.”
     </p>
+
     <p class="mt-3 text-base text-gray-300 max-w-2xl mx-auto">
       En Nyxion protegemos a particulares y todo tipo de empresas frente a las
       amenazas cibernéticas. Desde auditorías web hasta monitorización 24/7 y
       respuesta ante incidentes, te ayudamos a mantener tu entorno personal o
-      empresarial seguro y en funcionamiento
+      empresarial seguro y en funcionamiento.
     </p>
-    <!--
-    <p class="mt-6 text-lg sm:text-xl font-semibold text-white/90 italic">
-      “Seguridad en casa. Seguridad en el trabajo. Para particulares y
-      empresas.”
-    </p> -->
 
     <div class="mt-8">
       <a
         href="#servicios"
-        class="bg-primary hover:bg-secondary-blue text-white px-6 py-3 rounded-lg shadow-lg transition-all">
+        class="bg-[#0070A3] hover:bg-[#00648F] text-white px-6 py-3 rounded-lg shadow-lg transition-all"
+      >
         Conoce nuestros servicios
       </a>
     </div>
@@ -52,24 +64,14 @@
 <script is:inline>
 document.addEventListener("DOMContentLoaded", () => {
   const video = document.getElementById("hero-video");
-  const source = document.createElement("source");
-  source.src = "/assets/video/video3_opt.mp4";
-  source.type = "video/mp4";
-
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        video.appendChild(source);
-        video.load();
-        video.play();
-        video.classList.add("opacity-100");
-        observer.disconnect();
-      }
-    },
-    { rootMargin: "300px" }
-  );
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      video.classList.replace("opacity-0", "opacity-100");
+      video.play().catch(() => {});
+      observer.disconnect();
+    }
+  }, { rootMargin: "300px" });
 
   observer.observe(video);
 });
-
 </script>

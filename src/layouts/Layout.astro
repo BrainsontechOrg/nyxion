@@ -79,58 +79,279 @@ const { title = "Nyxion" } = Astro.props;
       {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Nyxion Cybersecurity",
-        "alternateName": "Nyxion",
+        "name": "Nyxion",
+        "alternateName": "Nyxion Ciberseguridad",
         "url": "https://nyxionsec.com",
         "logo": "https://nyxionsec.com/assets/logo.webp",
-        "description": "Nyxion Cybersecurity ofrece servicios avanzados de ciberseguridad preventiva, reactiva y formación para empresas, pymes y autónomos en toda España.",
-        "telephone": "+34 625 79 77 83",
-        "email": "contacto@nyxionsec.com",
+        "image": "https://nyxionsec.com/assets/og-image.webp",
+        "slogan": "Tu defensa digital empieza aquí",
+        "description": "Nyxion ofrece servicios avanzados de ciberseguridad preventiva, reactiva, auditorías y formación para empresas, pymes y autónomos en toda España.",
+        "foundingDate": "2025",
+        "telephone": "+34 643 16 73 17",
+        "email": "info@nyxionsec.com",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Oficina virtual",
           "addressLocality": "Sevilla",
           "addressCountry": "ES"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/company/nyxioncybersecurity/",
-          "https://www.instagram.com/nyxionsec/",
-          "https://x.com/nyxionsec"
-        ],
-        "founder": {
-          "@type": "Person",
-          "name": "Equipo Nyxion"
         },
         "areaServed": {
           "@type": "Place",
           "name": "España"
-        }
-      }
-    </script>
-
-    <!-- JSON-LD del sitio web -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Nyxion Cybersecurity",
-        "url": "https://nyxionsec.com",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://nyxionsec.com/?s={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+34 643 16 73 17",
+            "contactType": "customer service",
+            "areaServed": "ES",
+            "availableLanguage": ["Spanish"],
+            "hoursAvailable": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": "09:00",
+              "closes": "20:00"
+            }
+          }
+        ],
+        "makesOffer": [
+          {
+            "@type": "Service",
+            "name": "Ciberseguridad preventiva",
+            "image": "https://nyxionsec.com/assets/img/ciberseguridad-preventiva.webp",
+            "description": "Servicios preventivos para proteger tu negocio antes de que ocurran incidentes: auditorías, informes de exposición y análisis de infraestructura.",
+            "serviceType": "Ciberseguridad preventiva",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicios de Ciberseguridad Preventiva",
+              "itemListElement": [
+                {
+                  "@type": "Service",
+                  "name": "Auditorías web",
+                  "description": "Pago por vulnerabilidad encontrada (modelo pay-as-vuln-find).",
+                  "offers": {
+                    "@type": "Offer",
+                    "priceSpecification": {
+                      "@type": "PriceSpecification",
+                      "priceCurrency": "EUR",
+                      "price": "Variable"
+                    }
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Informes de presencia en Deep Web",
+                  "description": "Evaluación de exposición de datos sensibles en la Deep Web.",
+                  "offers": [
+                    {
+                      "@type": "Offer",
+                      "name": "Pago único",
+                      "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "priceCurrency": "EUR",
+                        "price": "Variable"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "name": "Suscripción mensual",
+                      "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "priceCurrency": "EUR",
+                        "price": "Variable mensual"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "Service",
+                  "name": "Auditorías de infraestructura, Wi-Fi y apps móviles",
+                  "description": "Análisis de seguridad de sistemas, redes inalámbricas y aplicaciones móviles.",
+                  "offers": {
+                    "@type": "Offer",
+                    "priceSpecification": {
+                      "@type": "PriceSpecification",
+                      "priceCurrency": "EUR",
+                      "price": "Presupuesto personalizado"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "Service",
+            "name": "Ciberseguridad reactiva",
+            "image": "https://nyxionsec.com/assets/img/ciberseguridad-reactiva.webp",
+            "description": "Servicios de respuesta y recuperación ante incidentes de ciberseguridad.",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicios de Ciberseguridad Reactiva",
+              "itemListElement": [
+                {
+                  "@type": "Service",
+                  "name": "Análisis forense digital",
+                  "description": "Investigación técnica de incidentes de seguridad en cualquier dispositivo.",
+                  "offers": {
+                    "@type": "Offer",
+                    "priceSpecification": {
+                      "@type": "PriceSpecification",
+                      "priceCurrency": "EUR",
+                      "price": "Presupuesto personalizado"
+                    }
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Asesoramiento de corrección de vulnerabilidades",
+                  "description": "Revisión y acompañamiento en la remediación de vulnerabilidades detectadas.",
+                  "offers": {
+                    "@type": "Offer",
+                    "name": "Pago extra por servicio realizado",
+                    "priceSpecification": {
+                      "@type": "PriceSpecification",
+                      "priceCurrency": "EUR",
+                      "price": "Variable"
+                    }
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Peritaje informático",
+                  "description": "Elaboración de informes técnicos y pruebas periciales ante procesos judiciales.",
+                  "offers": {
+                    "@type": "Offer",
+                    "priceSpecification": {
+                      "@type": "PriceSpecification",
+                      "priceCurrency": "EUR",
+                      "price": "Presupuesto personalizado"
+                    }
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Recuperación de datos",
+                  "description": "Recuperación de datos borrados o dañados bajo modelo de pago por tasa de éxito.",
+                  "offers": {
+                    "@type": "Offer",
+                    "name": "Pago por tasa de éxito",
+                    "priceSpecification": {
+                      "@type": "PriceSpecification",
+                      "priceCurrency": "EUR",
+                      "price": "Variable según caso"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "Service",
+            "name": "Ciberseguridad avanzada",
+            "image": "https://nyxionsec.com/assets/img/ciberseguridad-avanzada.webp",
+            "description": "Monitorización activa, despliegue de soluciones de seguridad y defensa proactiva ante amenazas.",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicios de Ciberseguridad Avanzada",
+              "itemListElement": [
+                {
+                  "@type": "Service",
+                  "name": "Monitorización activa (Wazuh)",
+                  "description": "Supervisión continua de infraestructura, correo y servicios PaaS. Despliegue único y mantenimiento mensual.",
+                  "offers": [
+                    {
+                      "@type": "Offer",
+                      "name": "Despliegue inicial",
+                      "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "priceCurrency": "EUR",
+                        "price": "Pago único"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "name": "Mantenimiento mensual",
+                      "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "priceCurrency": "EUR",
+                        "price": "Mensual según VPS y alcance"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "@type": "Service",
+                  "name": "Campañas de phishing controlado",
+                  "description": "Simulaciones de phishing y pruebas de ingeniería social para evaluar el nivel de concienciación de la organización.",
+                  "offers": {
+                    "@type": "Offer",
+                    "priceSpecification": {
+                      "@type": "PriceSpecification",
+                      "priceCurrency": "EUR",
+                      "price": "Presupuesto personalizado"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "Service",
+            "name": "Formación y concienciación en ciberseguridad",
+            "image": "https://nyxionsec.com/assets/img/formacion.webp",
+            "description": "Charlas, talleres y formación adaptada por roles para empresas y particulares.",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Formación y concienciación",
+              "itemListElement": [
+                {
+                  "@type": "Service",
+                  "name": "Charlas y talleres presenciales o online",
+                  "description": "Sesiones de concienciación adaptadas a distintos niveles de experiencia.",
+                  "offers": {
+                    "@type": "Offer",
+                    "priceSpecification": {
+                      "@type": "PriceSpecification",
+                      "priceCurrency": "EUR",
+                      "price": "Presupuesto personalizado"
+                    }
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Formación por roles",
+                  "description": "Cursos específicos para directivos, finanzas, desarrolladores y personal general.",
+                  "offers": {
+                    "@type": "Offer",
+                    "priceSpecification": {
+                      "@type": "PriceSpecification",
+                      "priceCurrency": "EUR",
+                      "price": "Variable según modalidad"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
       }
     </script>
   </head>
-
-  <body class="font-display text-text-light dark:text-text-dark">
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-  </body>
 </html>
+
+<body class="font-display text-text-light dark:text-text-dark">
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</body>
 
 <style is:global>
   html,

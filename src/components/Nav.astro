@@ -67,33 +67,42 @@ const links = [
 <!-- 📱 Menú móvil -->
 <nav
   id="mobile-nav"
-  class="absolute left-0 top-20 w-full bg-surface-light dark:bg-surface-dark p-6 flex flex-col gap-4 lg:hidden hidden shadow-lg">
+  class="absolute left-0 top-20 w-full bg-surface-light dark:bg-surface-dark p-6 flex flex-col gap-4 lg:hidden hidden shadow-lg"
+>
   {
     links.map((link) => (
-      link.sublinks ? (
-        <details class="group">
-          <summary class="flex justify-between items-center cursor-pointer text-base font-semibold text-text-light dark:text-text-dark hover:text-primary transition-colors">
+      link.label === "Servicios" ? (
+        <div class="flex flex-col gap-3">
+          <span class="text-base font-semibold text-text-light dark:text-text-dark">
             {link.label}
-            <span class="material-symbols-rounded text-primary transition-transform duration-300 group-open:rotate-180">
-              expand_more
-            </span>
-          </summary>
-          <div class="ml-4 mt-2 flex flex-col gap-2">
-            {
-              link.sublinks.map((sublink) => (
-                <a
-                  href={sublink.href}
-                  class="text-sm text-text-light dark:text-text-dark hover:text-primary-light transition-colors">
-                  {sublink.label}
-                </a>
-              ))
-            }
-          </div>
-        </details>
+          </span>
+
+      <div class="flex flex-wrap justify-around">
+  <a href="/servicios/ciberseguridad-preventiva"
+     class="px-2.5 py-1 rounded-full text-[13px] font-medium text-white bg-[#0070A3] hover:bg-[#005F8B] transition-colors">
+     Preventiva
+  </a>
+  <a href="/servicios/ciberseguridad-reactiva"
+     class="px-2.5 py-1 rounded-full text-[13px] font-medium text-white bg-[#0085BD] hover:bg-[#0074A7] transition-colors">
+     Reactiva
+  </a>
+  <a href="/servicios/ciberseguridad-avanzada"
+     class="px-2.5 py-1 rounded-full text-[13px] font-medium text-white bg-[#00A0C6] hover:bg-[#008DAF] transition-colors">
+     Avanzada
+  </a>
+  <a href="/servicios/formacion"
+     class="px-2.5 py-1 rounded-full text-[13px] font-medium text-white bg-[#005377] hover:bg-[#004565] transition-colors">
+     Formación
+  </a>
+</div>
+
+
+        </div>
       ) : (
         <a
           class="text-base font-medium text-text-light dark:text-text-dark hover:text-primary transition-colors"
-          href={link.href}>
+          href={link.href}
+        >
           {link.label}
         </a>
       )
@@ -102,10 +111,12 @@ const links = [
 
   <a
     href="/#contacto"
-    class="rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-secondary-blue transition-colors">
+    class="rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-secondary-blue transition-colors"
+  >
     Contáctanos
   </a>
 </nav>
+
 
 <script>
   const toggle = document.getElementById("menu-toggle");
