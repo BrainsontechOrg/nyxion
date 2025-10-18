@@ -3,7 +3,6 @@
 User-agent: *
 Allow: /
 
-# Bloqueo de posibles rutas internas o temporales
 Disallow: /pages/api
 
 Sitemap: https://nyxionsec.com/sitemap-index.xml
