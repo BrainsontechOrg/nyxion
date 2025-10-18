@@ -3,14 +3,15 @@
   aria-labelledby="header-title"
   id="inicio">
   <video
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="none"
-    poster="/assets/video/video3_opt.webp"
-    class="absolute inset-0 w-full h-full object-cover lazy-video">
-  </video>
+  id="hero-video"
+  aria-hidden="true"
+  class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 pointer-events-none"
+  poster="/assets/video/video3_opt.webp"
+  muted
+  playsinline
+  fetchpriority="high"
+></video>
+
 
   <!-- Capa oscura encima del vídeo -->
   <div class="absolute inset-0 bg-black/60"></div>
@@ -49,21 +50,26 @@
 </section>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const video = document.querySelector(".lazy-video");
-    if (!video) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("hero-video");
+  const source = document.createElement("source");
+  source.src = "/assets/video/video3_opt.mp4";
+  source.type = "video/mp4";
 
-    const source = document.createElement("source");
-    source.src = "/assets/video/video3_opt.mp4";
-    source.type = "video/mp4";
-
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
         video.appendChild(source);
+        video.load();
+        video.play();
+        video.classList.add("opacity-100");
         observer.disconnect();
       }
-    });
+    },
+    { rootMargin: "300px" }
+  );
 
-    observer.observe(video);
-  });
+  observer.observe(video);
+});
+
 </script>

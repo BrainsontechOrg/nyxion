@@ -1,0 +1,313 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Ciberseguridad Avanzada | Nyxion",
+    "alternateName": "Servicios de monitorización y phishing controlado",
+    "provider": {
+      "@type": "Organization",
+      "name": "Nyxion Cybersecurity",
+      "url": "https://nyxionsec.com",
+      "logo": "https://nyxionsec.com/assets/logo.svg",
+      "telephone": "+34643167317",
+      "email": "info@nyxionsec.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sevilla",
+        "addressCountry": "ES"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/nyxioncybersecurity",
+        "https://x.com/nyxionsec"
+      ]
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "España"
+    },
+    "serviceType": "Ciberseguridad avanzada, monitorización de infraestructuras, simulación de phishing",
+    "description": "Servicio de ciberseguridad avanzada en Sevilla. Nyxion ofrece monitorización activa 24/7, detección inteligente de amenazas y simulaciones de phishing para empresas, pymes y autónomos. Protege tu negocio antes, durante y después de cada ataque.",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://nyxionsec.com/servicios/ciberseguridad-avanzada",
+      "priceCurrency": "EUR",
+      "price": "0.0",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "EUR",
+        "price": "0",
+        "priceType": "StartingFrom"
+      },
+      "availability": "https://schema.org/InStock",
+      "eligibleRegion": {
+        "@type": "Place",
+        "name": "España"
+      }
+    },
+    "hasPart": [
+      {
+        "@type": "Service",
+        "name": "Monitorización activa de infraestructura",
+        "description": "Supervisión continua de servidores, correo electrónico y entornos PaaS mediante Wazuh. Alertas en tiempo real y paneles personalizados.",
+        "serviceType": "Monitorización y detección de amenazas"
+      },
+      {
+        "@type": "Service",
+        "name": "Simulación de Phishing",
+        "description": "Campañas de phishing controladas para evaluar la preparación de empleados y usuarios ante ciberataques.",
+        "serviceType": "Concienciación en ciberseguridad"
+      }
+    ],
+    "keywords": [
+      "ciberseguridad avanzada",
+      "ciberseguridad Sevilla",
+      "empresa de ciberseguridad Sevilla",
+      "servicios de ciberseguridad Sevilla",
+      "monitorización activa 24/7",
+      "detección de amenazas",
+      "simulación de phishing",
+      "protección 24/7",
+      "Wazuh",
+      "seguridad informática para empresas",
+      "Nyxion Cybersecurity"
+    ]
+  }
+</script>
+
+<Layout
+  title="Ciberseguridad Avanzada | Nyxion"
+  description="Monitorización activa 24/7, simulaciones de phishing y defensa continua para empresas. Servicios de ciberseguridad avanzada en Sevilla y toda España."
+>
+  <!-- Hero dividido -->
+  <section
+  class="relative text-white text-center pt-44 sm:pt-52 pb-24 px-6 overflow-hidden"
+  aria-labelledby="hero-avanzada"
+>
+  <!-- Imagen de fondo con parallax -->
+  <div
+    class="absolute inset-0 w-full h-full bg-fixed bg-center bg-cover"
+    style="background-image: url('/assets/img/ciberseguridad-avanzada.webp');"
+  ></div>
+
+  <!-- Capa oscura de contraste -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-[#0B1924]/65 via-[#0B1924]/80 to-[#0B1924]/95"
+  ></div>
+
+  <!-- Contenido -->
+  <div class="relative z-10 container mx-auto max-w-5xl">
+    <h1
+      id="hero-avanzada"
+      class="!text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-8 text-white leading-tight"
+    >
+      Defendemos lo que no ves
+    </h1>
+
+    <p class="text-text-white text-lg leading-relaxed max-w-3xl mx-auto">
+      La <strong>ciberseguridad avanzada</strong> combina
+      <strong>monitorización activa</strong>, detección inteligente y simulaciones
+      controladas de amenazas. En <strong>Nyxion</strong> desplegamos soluciones
+      basadas en <strong>Wazuh</strong> y <strong>phishing controlado</strong> para
+      proteger tu negocio antes, durante y después de cada ataque.
+    </p>
+
+    <a
+      href="/#contacto"
+      class="inline-block bg-primary hover:bg-hover-dark text-white font-semibold px-8 py-4 rounded-lg shadow transition mt-5"
+    >
+      Solicita tu evaluación avanzada
+    </a>
+  </div>
+</section>
+
+
+  <!-- Qué incluye -->
+  <section class="bg-surface-light py-20 px-6">
+    <div
+      class="container mx-auto max-w-7xl grid md:grid-cols-2 gap-12 items-center"
+    >
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-text-light">
+          Ciberseguridad avanzada: protección activa 24/7
+        </h2>
+        <p class="text-text-muted-light text-lg leading-relaxed mb-6">
+          No esperes a sufrir un ataque. Nuestra tecnología supervisa logs,
+          accesos, redes y correos electrónicos en tiempo real, alertando ante
+          cualquier comportamiento anómalo.
+        </p>
+        <p class="text-text-muted-light text-lg leading-relaxed">
+          Además, entrenamos a tus empleados mediante <strong
+            >simulaciones de phishing</strong
+          > que evalúan la respuesta humana ante amenazas reales.
+        </p>
+      </div>
+      <div class="flex justify-center md:justify-end">
+        <img
+          src="/assets/img/deteccion.webp"
+          alt="Detección de amenazas Nyxion"
+          class="rounded-xl shadow-lg w-[90%]"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section
+    id="servicios-avanzada"
+    class="bg-gradient-to-b from-section-light-blue to-surface-light py-20 px-6"
+    aria-labelledby="titulo-servicios-avanzada"
+  >
+    <div class="container mx-auto max-w-6xl">
+      <h2
+        id="titulo-servicios-avanzada"
+        class="text-3xl sm:text-4xl font-bold text-center text-text-light mb-16"
+      >
+        Nuestros servicios de Ciberseguridad Avanzada
+      </h2>
+
+      <div class="space-y-10">
+        <!-- Monitorización -->
+        <article
+          class="flex flex-col md:flex-row items-start md:items-center gap-8 bg-white/10 rounded-2xl border border-border-light p-8 shadow-md hover:shadow-lg hover:shadow-primary/20 transition-all duration-200 hover:-translate-y-1"
+          role="group"
+          aria-labelledby="servicio-monitorizacion"
+        >
+          <Icon
+            name="carbon:network-3"
+            class="w-14 h-14 text-primary flex-shrink-0"
+            aria-hidden="true"
+          />
+          <div class="flex flex-col gap-3">
+            <h3
+              id="servicio-monitorizacion"
+              class="text-2xl font-semibold text-primary leading-snug"
+            >
+              Monitorización activa de infraestructura
+            </h3>
+            <p class="text-text-muted-light leading-relaxed">
+              Supervisión continua de <strong>infraestructura</strong>, correo
+              electrónico y entornos PaaS mediante <strong>Wazuh</strong>.
+              Alertas y reportes en tiempo real con paneles personalizados.
+            </p>
+            <p class="text-sm text-text-results font-medium">
+              Modelo: <span class="font-bold"
+                >Pago único por despliegue + mantenimiento mensual</span
+              >
+            </p>
+            <a
+              href="/#contacto"
+              class="inline-block bg-primary hover:bg-hover-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 w-fit"
+            >
+              Solicitar información
+            </a>
+          </div>
+        </article>
+
+        <!-- Simulación de Phishing -->
+        <article
+          class="flex flex-col md:flex-row items-start md:items-center gap-8 bg-white/10 rounded-2xl border border-border-light p-8 shadow-md hover:shadow-lg hover:shadow-primary/20 transition-all duration-200 hover:-translate-y-1"
+          role="group"
+          aria-labelledby="servicio-phishing"
+        >
+          <Icon
+            name="mdi:email-alert-outline"
+            class="w-14 h-14 text-primary flex-shrink-0"
+            aria-hidden="true"
+          />
+          <div class="flex flex-col gap-3">
+            <h3
+              id="servicio-phishing"
+              class="text-2xl font-semibold text-primary leading-snug"
+            >
+              Simulación de Phishing
+            </h3>
+            <p class="text-text-muted-light leading-relaxed">
+              Diseñamos <strong>campañas de phishing realistas</strong> para evaluar
+              la preparación de empleados y usuarios ante amenazas. Adaptado a <strong
+                >empresas, pymes y autónomos</strong
+              >. Incluye métricas de clics, capturas de credenciales y
+              formaciones de refuerzo.
+            </p>
+
+            <p class="text-sm text-text-results font-medium">
+              Modelo: <span class="font-bold">Presupuesto personalizado</span>
+            </p>
+            <a
+              href="/#contacto"
+              class="inline-block bg-primary hover:bg-hover-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 w-fit"
+            >
+              Solicitar simulación
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline de proceso continuo -->
+  <section class="bg-surface-dark py-24 px-6 text-white">
+    <div class="container mx-auto max-w-7xl text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-10">
+        Vigilancia avanzada en 3 fases continuas
+      </h2>
+      <div
+        class="flex flex-col md:flex-row justify-center items-stretch gap-8 mt-10"
+      >
+        <div
+          class="flex-1 bg-surface-light rounded-2xl p-8 text-center border border-border-light shadow-lg"
+        >
+          <h3 class="text-xl font-semibold text-primary mb-3">1. Despliegue</h3>
+          <p class="text-text-muted-light">
+            Configuramos los agentes Wazuh y dashboards personalizados en tu
+            entorno.
+          </p>
+        </div>
+        <div
+          class="flex-1 bg-surface-light rounded-2xl p-8 text-center border border-border-light shadow-lg"
+        >
+          <h3 class="text-xl font-semibold text-primary mb-3">
+            2. Monitorización
+          </h3>
+          <p class="text-text-muted-light">
+            Recolectamos y analizamos eventos 24/7 para detectar amenazas o
+            anomalías.
+          </p>
+        </div>
+        <div
+          class="flex-1 bg-surface-light rounded-2xl p-8 text-center border border-border-light shadow-lg"
+        >
+          <h3 class="text-xl font-semibold text-primary mb-3">3. Respuesta</h3>
+          <p class="text-text-muted-light">
+            Emitimos alertas, informes y recomendaciones de respuesta inmediata.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final distinto -->
+  <section class="bg-[#0B1924] text-white py-20 text-center">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+        Eleva tu defensa al siguiente nivel
+      </h2>
+      <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+        Pasa de la protección reactiva a la proactiva. Con <strong
+          >Nyxion</strong
+        > tendrás visibilidad total y monitorización constante sobre tus sistemas
+        más críticos.
+      </p>
+      <a
+        href="/#contacto"
+        class="inline-block bg-primary hover:bg-hover-dark text-white font-semibold px-8 py-4 rounded-lg shadow transition"
+      >
+        Contactar con Nyxion
+      </a>
+    </div>
+  </section>
+</Layout>

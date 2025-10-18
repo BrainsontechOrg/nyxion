@@ -1,0 +1,242 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Formación y Concienciación en Ciberseguridad",
+  "alternateName": "Formación en ciberseguridad para empresas, pymes y autónomos",
+  "description": "Charlas, talleres y formación especializada por roles en ciberseguridad. En Nyxion ayudamos a empresas, pymes y autónomos a crear una cultura de seguridad digital sólida y efectiva.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Nyxion Cybersecurity",
+    "url": "https://nyxionsec.com",
+    "logo": "https://nyxionsec.com/assets/logo.svg",
+    "telephone": "+34643167317",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sevilla",
+      "addressCountry": "ES"
+    }
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "España"
+  },
+  "serviceType": [
+    "Formación en ciberseguridad",
+    "Talleres de concienciación digital",
+    "Formación para empleados",
+    "Formación para directivos y desarrolladores"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "A consultar",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "https://nyxionsec.com/servicios/formacion-y-concienciacion"
+  },
+  "hasCourse": [
+    {
+      "@type": "Course",
+      "name": "Charlas y talleres interactivos de ciberseguridad",
+      "description": "Sesiones presenciales u online con ejemplos prácticos, ejercicios y demostraciones para aumentar la conciencia sobre amenazas digitales."
+    },
+    {
+      "@type": "Course",
+      "name": "Formación especializada por roles",
+      "description": "Programas formativos adaptados a directivos, departamentos financieros y equipos técnicos para prevenir ataques y reforzar la seguridad organizacional."
+    }
+  ],
+  "keywords": [
+    "formación en ciberseguridad",
+    "concienciación digital",
+    "talleres de ciberseguridad",
+    "charlas de ciberseguridad",
+    "formación para empleados",
+    "formación para empresas",
+    "formación en seguridad informática",
+    "Nyxion Cybersecurity",
+    "formación ciberseguridad Sevilla"
+  ]
+}
+</script>
+
+<Layout
+  title="Formación y Concienciación | Nyxion"
+  description="Charlas, talleres y formación por roles en ciberseguridad. Ayudamos a empresas, pymes y autónomos a crear una cultura de seguridad digital real y efectiva."
+>
+  <!-- Hero -->
+<section
+  class="relative text-white text-center pt-32 sm:pt-44 pb-20 sm:pb-24 px-6 overflow-hidden"
+  aria-labelledby="hero-formacion"
+>
+  <!-- Imagen de fondo con parallax en desktop -->
+  <div
+    class="absolute inset-0 w-full h-full bg-cover bg-center md:bg-fixed"
+    style="background-image: url('/assets/img/formacion.webp');"
+  ></div>
+
+  <!-- Capa oscura para contraste -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-[#0B1924]/70 via-[#0B1924]/85 to-[#0B1924]/95"
+  ></div>
+
+  <!-- Contenido -->
+  <div class="relative z-10 container mx-auto max-w-5xl">
+    <h1
+      id="hero-formacion"
+      class="!text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-8 text-white leading-tight"
+    >
+      Donde la ciberseguridad se convierte en confianza
+    </h1>
+
+    <p class="text-text-white text-lg leading-relaxed max-w-3xl mx-auto">
+      En <strong>Nyxion</strong> ayudamos a <strong>empresas, pymes y autónomos</strong>
+      a desarrollar una verdadera <strong>cultura de seguridad</strong> mediante
+      formación práctica, talleres interactivos y programas personalizados para cada rol.
+      Porque la mejor tecnología no sirve si las personas no saben cómo protegerse.
+    </p>
+
+    <a
+      href="/#contacto"
+      class="inline-block bg-primary hover:bg-hover-dark text-white font-semibold px-8 py-4 rounded-lg shadow transition mt-5"
+    >
+      Solicitar información
+    </a>
+  </div>
+</section>
+
+  <!-- Qué es la formación en ciberseguridad -->
+  <section class="bg-surface-light py-20 px-6">
+    <div class="container mx-auto max-w-6xl text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-text-light">
+        ¿Por qué formar y concienciar en ciberseguridad?
+      </h2>
+      <p class="text-text-muted-light text-lg leading-relaxed max-w-3xl mx-auto">
+        La mayoría de los incidentes de seguridad comienzan con un <strong>error humano</strong>.
+        La formación en ciberseguridad no solo reduce riesgos, sino que transforma a cada empleado en
+        el primer escudo frente a los ataques. En Nyxion combinamos <strong>aprendizaje técnico</strong> y
+        <strong>concienciación práctica</strong> para generar comportamientos seguros y sostenibles.
+      </p>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section
+    class="bg-gradient-to-b from-section-light-blue to-surface-light py-20 px-6"
+  >
+    <div class="container mx-auto max-w-6xl">
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-center text-text-light mb-16"
+      >
+        Servicios de Formación y Concienciación
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
+        <!-- Charlas y talleres -->
+        <div
+  class="flex flex-col justify-between bg-white rounded-2xl border border-border-light p-8 shadow-lg hover:shadow-primary/30 transition h-full"
+        >
+          <Icon name="mdi:account-group-outline" class="w-12 h-12 text-primary mb-6" />
+          <h3 class="text-2xl font-semibold mb-4 text-primary">
+            Charlas y talleres interactivos
+          </h3>
+          <p class="text-text-muted-light mb-4 flex-grow">
+            Organizamos sesiones presenciales o virtuales adaptadas a tu sector, con ejemplos reales,
+            demostraciones en vivo y ejercicios prácticos para sensibilizar a los empleados sobre
+            phishing, contraseñas seguras, redes Wi-Fi, ingeniería social y uso responsable de la información.
+          </p>
+          <p class="text-sm text-text-results font-medium mb-6">
+            Modalidad: <span class="font-bold">Presencial u online</span>
+          </p>
+          <a
+            href="/#contacto"
+            class="inline-block bg-primary hover:bg-hover-dark text-white font-semibold px-6 py-3 rounded-lg transition text-center"
+          >
+            Solicitar taller
+          </a>
+        </div>
+
+        <!-- Formación por roles -->
+        <div
+  class="flex flex-col justify-between bg-white rounded-2xl border border-border-light p-8 shadow-lg hover:shadow-primary/30 transition h-full"
+        >
+          <Icon name="mdi:shield-account-outline" class="w-12 h-12 text-primary mb-6" />
+          <h3 class="text-2xl font-semibold mb-4 text-primary">
+            Formación especializada por roles
+          </h3>
+          <p class="text-text-muted-light mb-4 flex-grow">
+            Diseñamos itinerarios formativos específicos para cada perfil: <strong>directivos</strong>,
+            <strong>departamentos financieros</strong> y <strong>equipos técnicos o desarrolladores</strong>.
+            Cada programa se centra en los riesgos reales de su entorno y cómo prevenirlos de forma efectiva.
+          </p>
+          <p class="text-sm text-text-results font-medium mb-6">
+            Modelo: <span class="font-bold">Formación personalizada</span>
+          </p>
+          <a
+            href="/#contacto"
+            class="inline-block bg-primary hover:bg-hover-dark text-white font-semibold px-6 py-3 rounded-lg transition text-center"
+          >
+            Solicitar programa
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-background-light py-20 px-6">
+  <div class="container mx-auto max-w-4xl">
+    <h2 class="text-3xl sm:text-4xl font-bold text-center text-text-light mb-12">
+      Preguntas frecuentes sobre formación en ciberseguridad
+    </h2>
+
+    <div class="space-y-6">
+      <details class="group bg-white border border-border-light rounded-2xl p-6 shadow-md transition hover:shadow-lg">
+        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-primary">
+          <span>¿A quién van dirigidos los talleres y formaciones?</span>
+          <span class="text-text-muted-light group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-4 text-text-muted-light leading-relaxed">
+          A todo tipo de empresas, pymes y autónomos. Adaptamos el nivel técnico y los ejemplos al perfil de los asistentes:
+          desde directivos y personal administrativo hasta desarrolladores o personal IT.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-border-light rounded-2xl p-6 shadow-md transition hover:shadow-lg">
+        <summary class="flex justify-between items-center cursor-pointer text-lg font-semibold text-primary">
+          <span>¿Las formaciones pueden realizarse online?</span>
+          <span class="text-text-muted-light group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-4 text-text-muted-light leading-relaxed">
+          Sí, ofrecemos modalidad presencial, online o híbrida. Utilizamos herramientas seguras y entornos simulados
+          para garantizar la misma calidad educativa a distancia.
+        </p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- CTA final -->
+  <section class="bg-[#0B1924] text-white py-20 text-center">
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+        Potencia el factor humano en tu seguridad
+      </h2>
+      <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+        La ciberseguridad comienza con las personas. En <strong>Nyxion</strong> formamos, motivamos y guiamos
+        a tus equipos para que sean la primera línea de defensa frente a cualquier amenaza digital.
+      </p>
+      <a
+        href="/#contacto"
+        class="inline-block bg-primary hover:bg-hover-dark text-white font-semibold px-8 py-4 rounded-lg shadow transition"
+      >
+        Contactar con Nyxion
+      </a>
+    </div>
+  </section>
+</Layout>

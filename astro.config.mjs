@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-
+import icon from "astro-icon";
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
@@ -17,7 +17,7 @@ export default defineConfig({
     }
   },
   site: process.env.PUBLIC_SITE_URL,
-  integrations: [sitemap()],
+  integrations: [sitemap(), icon()],
   server: {
     'Access-Control-Allow-Origin': '*',
 
