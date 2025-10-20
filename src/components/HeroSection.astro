@@ -3,32 +3,44 @@
   class="relative h-[75vh] sm:h-[80vh] flex items-center justify-center overflow-hidden"
   aria-labelledby="header-title"
 >
-  <!-- Imagen del póster visible para mejorar el LCP -->
-  <img
-    src="/assets/video/portada.webp"
-    alt="Ciberseguridad Nyxion"
-    fetchpriority="high"
-    decoding="async"
-    class="absolute inset-0 w-full h-full object-cover"
-  />
+  <!-- Imagen del póster visible para LCP -->
+  <picture>
+    <source
+      srcset="/assets/video/portada-480.webp 480w,
+            /assets/video/portada-768.webp 768w,
+            /assets/video/portada-1280.webp 1280w,
+            /assets/video/portada.webp 1920w"
+      sizes="100vw"
+      type="image/webp"
+    />
+    <img
+      src="/assets/video/portada.webp"
+      alt="Ciberseguridad Nyxion"
+      width="1920"
+      height="1080"
+      fetchpriority="high"
+      decoding="async"
+      loading="eager"
+      class="absolute inset-0 w-full h-full object-cover will-change-transform"
+    />
+  </picture>
 
-  <!-- Vídeo optimizado -->
+  <!-- Capa oscura sobre la imagen (no bloqueante) -->
+  <div class="absolute inset-0 bg-black/60 z-[1]"></div>
+
+  <!-- Vídeo: renderizado asíncrono -->
   <video
     id="hero-video"
     aria-hidden="true"
-    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 pointer-events-none"
+    class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 pointer-events-none z-[0]"
     poster="/assets/video/portada.webp"
     muted
     playsinline
     preload="none"
     loop
   >
-
     <source src="/assets/video/portada.mp4" type="video/mp4" />
   </video>
-
-  <!-- Capa oscura encima del vídeo -->
-  <div class="absolute inset-0 bg-black/60"></div>
 
   <!-- Contenido centrado -->
   <div class="relative z-10 text-center px-4">
@@ -40,7 +52,8 @@
     </h1>
 
     <p class="mt-3 text-lg sm:text-xl font-semibold italic text-white/90">
-      “Seguridad en casa. Seguridad en el trabajo. Para particulares y empresas.”
+      “Seguridad en casa. Seguridad en el trabajo. Para particulares y
+      empresas.”
     </p>
 
     <p class="mt-3 text-base text-gray-300 max-w-2xl mx-auto">
@@ -62,16 +75,23 @@
 </section>
 
 <script is:inline>
-document.addEventListener("DOMContentLoaded", () => {
-  const video = document.getElementById("hero-video");
-  const observer = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-      video.classList.replace("opacity-0", "opacity-100");
-      video.play().catch(() => {});
-      observer.disconnect();
-    }
-  }, { rootMargin: "300px" });
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.getElementById("hero-video");
 
-  observer.observe(video);
-});
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Retraso ligero para que la imagen del poster sea visible primero
+          setTimeout(() => {
+            video.classList.replace("opacity-0", "opacity-100");
+            video.play().catch(() => {});
+          }, 300);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" },
+    );
+
+    observer.observe(video);
+  });
 </script>

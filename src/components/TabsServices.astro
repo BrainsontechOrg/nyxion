@@ -146,42 +146,55 @@ const servicios = [
     ],
   },
 ];
+
+let selectedServicio = "preventiva";
 ---
 
 <section
   class="section tabs bg-section-dark py-16 dark:bg-surface-dark sm:py-24"
   id="servicios"
-  aria-labelledby="servicios-title">
+  aria-labelledby="servicios-title"
+>
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <h2
       class="text-3xl font-extrabold text-white sm:text-4xl text-center"
-      id="servicios-title">
+      id="servicios-title"
+    >
       Servicios Nyxion
     </h2>
     <p
-      class="mt-4 text-lg text-text-muted-dark dark:text-text-muted-dark text-center">
+      class="mt-4 text-lg text-text-muted-dark dark:text-text-muted-dark text-center"
+    >
       Cobertura total en cuatro líneas:
       <strong>Preventiva</strong>, <strong>Reactiva</strong>,
       <strong>Avanzada</strong> y <strong>Formación</strong>. Intervenimos donde
       más impacto tiene para tu negocio.
     </p>
 
-    <!-- Dropdown solo en móvil -->
-    <div class="block lg:hidden mt-8">
-      <label for="mobile-tabs" class="sr-only">Selecciona un servicio</label>
+    <!-- Tabs solo en móvil -->
 
-      <select
-        id="mobile-tabs"
-        class="w-full p-3 rounded-md bg-white text-text-light border border-border-light
-           dark:bg-background-dark dark:text-white dark:border-border-dark
-           focus:outline-none focus:ring-2 focus:ring-primary">
-        {servicios.map((s) => <option value={s.tipo}>{s.titulo}</option>)}
-      </select>
-    </div>
+ <div class="flex flex-col justify-center gap-3 mt-8 lg:hidden">
+  {servicios.map((s, i) => (
+    <button
+      data-tab={s.tipo}
+      class={`mobile-tab-btn w-full rounded-full font-semibold transition-all duration-200 ease-in-out border 
+        px-5 py-2.5 focus:outline-none
+        ${
+          i === 0
+            ? "bg-[#00648F] text-white border-[#00648F] shadow-md"
+            : "bg-transparent text-white/80 border-white/40 hover:bg-[#00648F]/80 hover:text-white"
+        }`}
+    >
+      {s.titulo}
+    </button>
+  ))}
+</div>
+
 
     <!-- Tabs escritorio -->
     <div
-      class="tab-nav mt-12 hidden lg:flex flex-wrap justify-center gap-4 border-b border-border-light dark:border-border-dark px-2">
+      class="tab-nav mt-12 hidden lg:flex flex-wrap justify-center gap-4 border-b border-border-light dark:border-border-dark px-2"
+    >
       {
         servicios.map((s) => (
           <button
@@ -190,7 +203,8 @@ const servicios = [
          text-sm md:text-base text-text-muted-dark
          hover:text-primary-light hover:border-primary-light
          transition-all duration-200 font-medium cursor-pointer"
-            data-tab={s.tipo}>
+            data-tab={s.tipo}
+          >
             {s.titulo}
           </button>
         ))
@@ -205,7 +219,8 @@ const servicios = [
             id={`tab-${s.tipo}`}
             class={`cards tab-panel ${i === 0 ? "" : "hidden"} grid gap-8 md:grid-cols-2 lg:grid-cols-3`}
             role="region"
-            aria-label={s.titulo}>
+            aria-label={s.titulo}
+          >
             {s.items.map((item) => (
               <article class="flex flex-col rounded-lg border border-border-light bg-background-light p-6 shadow-sm dark:border-border-dark dark:bg-background-dark transition-transform hover:scale-[1.01]">
                 <h3 class="font-bold text-lg text-text-light dark:text-white">
@@ -221,8 +236,9 @@ const servicios = [
                 </ul>
 
                 <a
-                  href={`/servicios/ciberseguridad-${s.tipo}#${item.slug}`}
-                  class="mt-auto self-end rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-blue transition-colors">
+                  href={`/servicios/ciberseguridad-${s.tipo}`}
+                  class="mt-auto self-end rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-blue transition-colors"
+                >
                   Descubrir más
                 </a>
               </article>
@@ -264,18 +280,55 @@ const servicios = [
     });
 
     // --- Cambio en móvil (dropdown) ---
-    if (select) {
-      select.addEventListener("change", (e) => {
-        const target = e.target.value;
-        panels.forEach((panel) => panel.classList.add("hidden"));
-        document.getElementById(`tab-${target}`).classList.remove("hidden");
+    // --- Click tabs móvil ---
+    const mobileButtons = document.querySelectorAll(".mobile-tab-btn");
 
-        buttons.forEach((b) =>
-          b.classList.remove("text-white", "font-semibold", "border-primary"),
-        );
-        const active = document.querySelector(`[data-tab="${target}"]`);
-        if (active)
-          active.classList.add("text-white", "font-semibold", "border-primary");
+    if (mobileButtons.length) {
+      // Estado inicial: activa el primero
+      mobileButtons[0].classList.add(
+        "bg-[#00648F]",
+        "text-white",
+        "border-[#00648F]",
+        "shadow-md",
+      );
+      panels[0].classList.remove("hidden");
+
+      mobileButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.dataset.tab;
+
+          // Reinicia todos al estilo inactivo
+          mobileButtons.forEach((b) => {
+            b.classList.remove(
+              "bg-[#00648F]",
+              "text-white",
+              "border-[#00648F]",
+              "shadow-md",
+            );
+            b.classList.add(
+              "bg-transparent",
+              "text-white/80",
+              "border-white/40",
+            );
+          });
+
+          // Activa el actual
+          btn.classList.remove(
+            "bg-transparent",
+            "text-white/80",
+            "border-white/40",
+          );
+          btn.classList.add(
+            "bg-[#00648F]",
+            "text-white",
+            "border-[#00648F]",
+            "shadow-md",
+          );
+
+          // Cambia panel
+          panels.forEach((panel) => panel.classList.add("hidden"));
+          document.getElementById(`tab-${target}`).classList.remove("hidden");
+        });
       });
     }
   });
