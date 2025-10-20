@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Nyxion Ciberseguridad",
+  "short_name": "Nyxion",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +15,11 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
+  "theme_color": "#00648F",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "orientation": "portrait",
+  "description": "Nyxion ofrece servicios avanzados de ciberseguridad en Sevilla: auditorías, pentesting y protección digital para empresas, pymes y autónomos."
 }
