@@ -4,7 +4,8 @@ import Footer from "@/components/Footer.astro";
 
 import stylesUrl from "@/styles/global.css?url";
 
-const { title = "Nyxion" } = Astro.props;
+const { title = "Nyxion - Ciberseguridad para empresas, pymes y autónomos" } =
+  Astro.props;
 const siteUrl = import.meta.env.PUBLIC_SITE_URL;
 ---
 
@@ -17,12 +18,31 @@ const siteUrl = import.meta.env.PUBLIC_SITE_URL;
     <link rel="canonical" href={import.meta.env.PUBLIC_SITE_URL} />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="16x16" href={`${siteUrl}/favicon-16x16.png`} />
-    <link rel="icon" type="image/png" sizes="32x32" href={`${siteUrl}/favicon-32x32.png`} />
-    <link rel="icon" type="image/png" href={`${siteUrl}/favicon-96x96.png`} sizes="96x96" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href={`${siteUrl}/favicon-16x16.png`}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href={`${siteUrl}/favicon-32x32.png`}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href={`${siteUrl}/favicon-96x96.png`}
+      sizes="96x96"
+    />
     <link rel="icon" type="image/svg+xml" href={`${siteUrl}/favicon.svg`} />
     <link rel="shortcut icon" href={`${siteUrl}/favicon.ico`} />
-    <link rel="apple-touch-icon" sizes="180x180" href={`${siteUrl}/apple-touch-icon.png`} />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={`${siteUrl}/apple-touch-icon.png`}
+    />
     <link rel="manifest" href={`/site.webmanifest`} />
 
     <link rel="preload" href={stylesUrl} as="style" fetchpriority="high" />
@@ -354,6 +374,15 @@ const siteUrl = import.meta.env.PUBLIC_SITE_URL;
             }
           }
         ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Nyxion",
+        "alternateName": "Nyxion Ciberseguridad",
+        "url": "https://nyxionsec.com"
       }
     </script>
   </head>
